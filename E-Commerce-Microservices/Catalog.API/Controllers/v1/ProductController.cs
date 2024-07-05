@@ -1,17 +1,19 @@
-﻿using Catalog.API.WebFramework.Api;
+﻿using Asp.Versioning;
+using Catalog.API.WebFramework.Api;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Controllers.v1
 {
-    [Route("api/[controller]")]
+    [ApiVersion(1)]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
         [HttpGet("[action]")]
         public ApiResult<string> Get()
         {
-            var y = 0;
-            var x = 5 / y;
+            //var y = 0;
+            //var x = 5 / y;
             return Ok("get all products");
         }
 
