@@ -10,6 +10,8 @@ namespace Catalog.API.Controllers.v1
         [HttpGet("[action]")]
         public ApiResult<string> Get()
         {
+            var y = 0;
+            var x = 5 / y;
             return Ok("get all products");
         }
 
