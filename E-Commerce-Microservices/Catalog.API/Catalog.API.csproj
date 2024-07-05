@@ -15,4 +15,8 @@
     <Folder Include="Controllers\v2\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
+  </ItemGroup>
+
 </Project>
