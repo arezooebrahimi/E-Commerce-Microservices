@@ -19,4 +19,9 @@
     <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\Dapper\Concrete\" />
+    <Folder Include="Repositories\Dapper\Abstract\" />
+  </ItemGroup>
+
 </Project>
