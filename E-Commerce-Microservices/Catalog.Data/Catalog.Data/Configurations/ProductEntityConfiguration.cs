@@ -15,6 +15,7 @@ namespace Catalog.Data.Configurations
 
             builder.Property(p => p.Name).IsRequired().HasMaxLength(300);
             builder.Property(p => p.Slug).IsRequired().HasMaxLength(300);
+            builder.HasIndex(p => p.Slug).IsUnique();
             builder.Property(p => p.ShortDescription).HasMaxLength(500);
             builder.Property(p => p.Description).HasColumnType("text");
             builder.Property(p => p.Tag).HasMaxLength(100);

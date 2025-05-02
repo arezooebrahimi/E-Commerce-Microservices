@@ -15,6 +15,7 @@ namespace Catalog.Data.Configurations
 
             builder.Property(c => c.Name).IsRequired().HasMaxLength(300);
             builder.Property(c => c.Slug).IsRequired().HasMaxLength(300);
+            builder.HasIndex(p => p.Slug).IsUnique();
             builder.Property(c => c.Description).HasColumnType("text");
 
             builder.Property(c => c.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
