@@ -1,0 +1,398 @@
+[
+  {
+    "id": "00236c0b-804d-4176-85da-9864bfc22289",
+    "featureId": "62a89d67-2b01-4459-b839-c53de734e914",
+    "name": "مشکی",
+    "slug": "black",
+    "order": 1,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "004fdc9d-d6a6-4507-8518-4dba9b900822",
+    "featureId": "62a89d67-2b01-4459-b839-c53de734e914",
+    "name": "سفید",
+    "slug": "white",
+    "order": 2,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "005cb54f-e5b3-4947-aa73-0f235cad09ce",
+    "featureId": "62a89d67-2b01-4459-b839-c53de734e914",
+    "name": "آبی",
+    "slug": "blue",
+    "order": 3,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "007566ea-38b3-4a5b-935d-87d07dfd0cb0",
+    "featureId": "62a89d67-2b01-4459-b839-c53de734e914",
+    "name": "قرمز",
+    "slug": "red",
+    "order": 4,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "008da43b-2939-4e8a-a352-b583984f87af",
+    "featureId": "62a89d67-2b01-4459-b839-c53de734e914",
+    "name": "سبز",
+    "slug": "green",
+    "order": 5,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "00bc9855-dc2e-4809-b3ab-dcc87a7829a8",
+    "featureId": "44edf5b3-e607-4669-a0bd-f07bbe63795f",
+    "name": "32 گیگابایت",
+    "slug": "32gb",
+    "order": 1,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "00de5915-a02f-4d01-8f99-166616c36b02",
+    "featureId": "44edf5b3-e607-4669-a0bd-f07bbe63795f",
+    "name": "64 گیگابایت",
+    "slug": "64gb",
+    "order": 2,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "00faaf6c-fafa-484f-8e97-bb73ee3ccac0",
+    "featureId": "44edf5b3-e607-4669-a0bd-f07bbe63795f",
+    "name": "128 گیگابایت",
+    "slug": "128gb",
+    "order": 3,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "0108da38-89a5-4e71-b988-1b7daf084798",
+    "featureId": "44edf5b3-e607-4669-a0bd-f07bbe63795f",
+    "name": "256 گیگابایت",
+    "slug": "256gb",
+    "order": 4,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "0118f623-d46b-4bfa-a208-551eedf5bc65",
+    "featureId": "44edf5b3-e607-4669-a0bd-f07bbe63795f",
+    "name": "512 گیگابایت",
+    "slug": "512gb",
+    "order": 5,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "0136dbde-ebac-4eff-b049-db6d399ddf49",
+    "featureId": "9e217f94-1dad-4cb2-a4e8-cf7a7f093adb",
+    "name": "4 گیگابایت",
+    "slug": "4gb",
+    "order": 1,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "0172bc13-e537-4e9d-98bb-3c699e4a01a3",
+    "featureId": "9e217f94-1dad-4cb2-a4e8-cf7a7f093adb",
+    "name": "6 گیگابایت",
+    "slug": "6gb",
+    "order": 2,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "017660b9-f2a8-41eb-bf66-6654c880a352",
+    "featureId": "9e217f94-1dad-4cb2-a4e8-cf7a7f093adb",
+    "name": "8 گیگابایت",
+    "slug": "8gb",
+    "order": 3,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "01b893ea-3c8a-4572-a260-bc4fde4264d1",
+    "featureId": "9e217f94-1dad-4cb2-a4e8-cf7a7f093adb",
+    "name": "12 گیگابایت",
+    "slug": "12gb",
+    "order": 4,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "01d3048e-5c51-4899-aecb-25ebbdb4db2d",
+    "featureId": "9e217f94-1dad-4cb2-a4e8-cf7a7f093adb",
+    "name": "16 گیگابایت",
+    "slug": "16gb",
+    "order": 5,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "01f0dcdf-0294-4897-b6d8-6de5920567e8",
+    "featureId": "8ea4a926-8a9c-47d8-bf03-f4eb94b65e18",
+    "name": "5.5 اینچ",
+    "slug": "5-5-inch",
+    "order": 1,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "01fb65f7-60fe-456e-96c6-b4b4e99530d8",
+    "featureId": "8ea4a926-8a9c-47d8-bf03-f4eb94b65e18",
+    "name": "6.1 اینچ",
+    "slug": "6-1-inch",
+    "order": 2,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "02051996-09b0-4b62-bd25-9ceebaf4c337",
+    "featureId": "8ea4a926-8a9c-47d8-bf03-f4eb94b65e18",
+    "name": "6.7 اینچ",
+    "slug": "6-7-inch",
+    "order": 3,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "02099f4d-3c97-43b3-82b7-3d6c93d67430",
+    "featureId": "8ea4a926-8a9c-47d8-bf03-f4eb94b65e18",
+    "name": "13 اینچ",
+    "slug": "13-inch",
+    "order": 4,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "02228f38-0e5d-4d9b-9e20-0a30a605794f",
+    "featureId": "8ea4a926-8a9c-47d8-bf03-f4eb94b65e18",
+    "name": "15.6 اینچ",
+    "slug": "15-6-inch",
+    "order": 5,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "0250ab52-db84-46e8-ac44-9fd1fc4fee99",
+    "featureId": "ede5ac1a-d5df-4c02-ae48-2143db54b775",
+    "name": "HD (720p)",
+    "slug": "hd-720p",
+    "order": 1,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "0263b1f9-431a-401e-9654-e65f1dc1510d",
+    "featureId": "ede5ac1a-d5df-4c02-ae48-2143db54b775",
+    "name": "Full HD (1080p)",
+    "slug": "full-hd-1080p",
+    "order": 2,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "02776ac9-6a61-4e6f-a1fa-00a235bcef2e",
+    "featureId": "ede5ac1a-d5df-4c02-ae48-2143db54b775",
+    "name": "2K (1440p)",
+    "slug": "2k-1440p",
+    "order": 3,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "028f458f-b318-41c4-b15b-3b6b36e3da41",
+    "featureId": "ede5ac1a-d5df-4c02-ae48-2143db54b775",
+    "name": "4K (2160p)",
+    "slug": "4k-2160p",
+    "order": 4,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "02d19982-8de2-4f4f-83b5-5f2284a9016f",
+    "featureId": "55dc1bb3-ba3b-4ecc-b560-91959d17166d",
+    "name": "Intel Core i3",
+    "slug": "intel-core-i3",
+    "order": 1,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "03041e88-876d-4ce3-b848-2f19cae775b7",
+    "featureId": "55dc1bb3-ba3b-4ecc-b560-91959d17166d",
+    "name": "Intel Core i5",
+    "slug": "intel-core-i5",
+    "order": 2,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "0304aa14-fde4-44dd-8cd6-a47f006b7d59",
+    "featureId": "55dc1bb3-ba3b-4ecc-b560-91959d17166d",
+    "name": "Intel Core i7",
+    "slug": "intel-core-i7",
+    "order": 3,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "031a81d9-fe21-4768-951c-2ff242cc3d17",
+    "featureId": "55dc1bb3-ba3b-4ecc-b560-91959d17166d",
+    "name": "Intel Core i9",
+    "slug": "intel-core-i9",
+    "order": 4,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "031ccf44-b9eb-46ff-8da5-29943757c4cd",
+    "featureId": "55dc1bb3-ba3b-4ecc-b560-91959d17166d",
+    "name": "AMD Ryzen 5",
+    "slug": "amd-ryzen-5",
+    "order": 5,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "03368ffe-4558-4f34-adb9-6f807f895540",
+    "featureId": "63b06fd2-c6fd-42f7-adb3-f4a5f4d1ca5e",
+    "name": "Intel UHD Graphics",
+    "slug": "intel-uhd-graphics",
+    "order": 1,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "034d4a79-eac2-48d1-8921-f4c577edb319",
+    "featureId": "63b06fd2-c6fd-42f7-adb3-f4a5f4d1ca5e",
+    "name": "NVIDIA GeForce GTX 1650",
+    "slug": "nvidia-geforce-gtx-1650",
+    "order": 2,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "03b6cb3f-b300-4775-b6fa-547c76126331",
+    "featureId": "63b06fd2-c6fd-42f7-adb3-f4a5f4d1ca5e",
+    "name": "NVIDIA GeForce RTX 3060",
+    "slug": "nvidia-geforce-rtx-3060",
+    "order": 3,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "03c7a474-c634-419b-b66f-2cf456d9e87a",
+    "featureId": "63b06fd2-c6fd-42f7-adb3-f4a5f4d1ca5e",
+    "name": "NVIDIA GeForce RTX 3070",
+    "slug": "nvidia-geforce-rtx-3070",
+    "order": 4,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "03e9b308-a13a-4cd2-b557-ca3cb24f5006",
+    "featureId": "63b06fd2-c6fd-42f7-adb3-f4a5f4d1ca5e",
+    "name": "NVIDIA GeForce RTX 3080",
+    "slug": "nvidia-geforce-rtx-3080",
+    "order": 5,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "04143ed8-64a5-4533-b175-e1cef09e67a9",
+    "featureId": "0225925f-94dd-4081-b976-4125f4332e69",
+    "name": "3000 میلی‌آمپر",
+    "slug": "3000mah",
+    "order": 1,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "04345b32-e0c0-4f0d-84e7-13735aba2804",
+    "featureId": "0225925f-94dd-4081-b976-4125f4332e69",
+    "name": "4000 میلی‌آمپر",
+    "slug": "4000mah",
+    "order": 2,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "04b65bc2-7a01-4fc5-a912-09fe23448edb",
+    "featureId": "0225925f-94dd-4081-b976-4125f4332e69",
+    "name": "5000 میلی‌آمپر",
+    "slug": "5000mah",
+    "order": 3,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "04c3f09d-3af1-45a2-8d5b-b7ed03f87d58",
+    "featureId": "0225925f-94dd-4081-b976-4125f4332e69",
+    "name": "6000 میلی‌آمپر",
+    "slug": "6000mah",
+    "order": 4,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "05169c19-56e0-4c2b-a753-a96c97da029e",
+    "featureId": "0225925f-94dd-4081-b976-4125f4332e69",
+    "name": "7000 میلی‌آمپر",
+    "slug": "7000mah",
+    "order": 5,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "0542e41b-74fc-4385-a9dc-05de08a30cb7",
+    "featureId": "3f08b340-4c1e-40eb-a50d-ccbf3671b79e",
+    "name": "Android",
+    "slug": "android",
+    "order": 1,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "054cea87-280c-4a02-8b1f-c1236361fcdb",
+    "featureId": "3f08b340-4c1e-40eb-a50d-ccbf3671b79e",
+    "name": "iOS",
+    "slug": "ios",
+    "order": 2,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "0561c846-f688-4226-ba84-1f3e13c1a36d",
+    "featureId": "3f08b340-4c1e-40eb-a50d-ccbf3671b79e",
+    "name": "Windows",
+    "slug": "windows",
+    "order": 3,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "056881b2-1dd9-4162-8015-6a6f7d08736f",
+    "featureId": "3f08b340-4c1e-40eb-a50d-ccbf3671b79e",
+    "name": "macOS",
+    "slug": "macos",
+    "order": 4,
+    "variables": [],
+    "defaultProductOptions": []
+  },
+  {
+    "id": "057fc817-8a56-451b-9bf7-0790b9f2bfbc",
+    "featureId": "3f08b340-4c1e-40eb-a50d-ccbf3671b79e",
+    "name": "Linux",
+    "slug": "linux",
+    "order": 5,
+    "variables": [],
+    "defaultProductOptions": []
+  }
+] 

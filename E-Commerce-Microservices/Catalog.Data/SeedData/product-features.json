@@ -1,0 +1,226 @@
+[
+  {
+    "id": "62a89d67-2b01-4459-b839-c53de734e914",
+    "name": "رنگ",
+    "slug": "color",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "44edf5b3-e607-4669-a0bd-f07bbe63795f",
+    "name": "حافظه داخلی",
+    "slug": "internal-storage",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "9e217f94-1dad-4cb2-a4e8-cf7a7f093adb",
+    "name": "حافظه RAM",
+    "slug": "ram",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "8ea4a926-8a9c-47d8-bf03-f4eb94b65e18",
+    "name": "اندازه صفحه نمایش",
+    "slug": "screen-size",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "ede5ac1a-d5df-4c02-ae48-2143db54b775",
+    "name": "رزولوشن صفحه نمایش",
+    "slug": "screen-resolution",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "55dc1bb3-ba3b-4ecc-b560-91959d17166d",
+    "name": "پردازنده",
+    "slug": "processor",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "63b06fd2-c6fd-42f7-adb3-f4a5f4d1ca5e",
+    "name": "کارت گرافیک",
+    "slug": "graphics-card",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "0225925f-94dd-4081-b976-4125f4332e69",
+    "name": "ظرفیت باتری",
+    "slug": "battery-capacity",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "3f08b340-4c1e-40eb-a50d-ccbf3671b79e",
+    "name": "سیستم عامل",
+    "slug": "operating-system",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "d79f6491-26db-43d7-bf82-313a58c9c515",
+    "name": "دوربین اصلی",
+    "slug": "main-camera",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "42011f8d-df06-46cb-8b0d-ef48fdd1430e",
+    "name": "دوربین سلفی",
+    "slug": "selfie-camera",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "62ab2d46-2ffc-486a-ab88-a9e3c6b45081",
+    "name": "نوع صفحه نمایش",
+    "slug": "display-type",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "1ef78f88-fd87-45d9-bfe4-d8ae6879722a",
+    "name": "نوع اتصال",
+    "slug": "connection-type",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "5dfea029-0872-4ec4-b060-de362fdbb3bd",
+    "name": "سرعت انتقال",
+    "slug": "transfer-speed",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "dc192319-4eaa-4179-83b3-b2fc28578553",
+    "name": "ظرفیت",
+    "slug": "capacity",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "44363b53-86af-49ef-aeb3-32114e06b906",
+    "name": "نوع حافظه",
+    "slug": "memory-type",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "87224b6a-f938-4662-9049-283ddb73c0c2",
+    "name": "سرعت خواندن/نوشتن",
+    "slug": "read-write-speed",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "adcb8ae6-c3ef-4b43-ae44-455b249933ef",
+    "name": "رابط",
+    "slug": "interface",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "f19b9026-ca2e-4700-a6eb-6a21c68cc816",
+    "name": "نوع چاپ",
+    "slug": "print-type",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "e966e186-ebae-4474-8728-40d84e849229",
+    "name": "رزولوشن چاپ",
+    "slug": "print-resolution",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "04aa74b8-fc59-451c-b626-6f3a11497fda",
+    "name": "سرعت چاپ",
+    "slug": "print-speed",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "a6af6159-395a-497d-90a5-b09818ac5427",
+    "name": "نوع کارتریج",
+    "slug": "cartridge-type",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "7988d7f2-fc4f-4333-9e24-cbf561e0d4d4",
+    "name": "نوع سنسور",
+    "slug": "sensor-type",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "d9515793-399f-4474-bf7a-daf4bdff0974",
+    "name": "رزولوشن تصویر",
+    "slug": "image-resolution",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "fd9d6dea-683f-4af2-9e46-15ddddd07f84",
+    "name": "نوع لنز",
+    "slug": "lens-type",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "2b03c29d-db66-4158-88da-6e13cef159c7",
+    "name": "نوع میکروفون",
+    "slug": "microphone-type",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "1892133b-7296-4f96-8c31-ffb09cbf84e3",
+    "name": "نوع بلوتوث",
+    "slug": "bluetooth-type",
+    "type": "select",
+    "products": [],
+    "options": []
+  },
+  {
+    "id": "7d35cb1a-a529-4f0f-bd82-7159e5d70f76",
+    "name": "مقاومت در برابر آب",
+    "slug": "water-resistance",
+    "type": "select",
+    "products": [],
+    "options": []
+  }
+] 

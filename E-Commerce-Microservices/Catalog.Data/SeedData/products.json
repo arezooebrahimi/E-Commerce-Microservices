@@ -1,0 +1,577 @@
+[
+  {
+    "id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+    "name": "گوشی موبایل سامسونگ گلکسی S24",
+    "slug": "samsung-galaxy-s24",
+    "shortDescription": "گوشی هوشمند پرچمدار سامسونگ با پردازنده قدرتمند و دوربین پیشرفته",
+    "description": "گوشی موبایل سامسونگ گلکسی S24 با طراحی مدرن و امکانات پیشرفته، یکی از بهترین گوشی‌های هوشمند بازار است. این گوشی مجهز به پردازنده قدرتمند، دوربین با کیفیت بالا و صفحه نمایش AMOLED است.",
+    "brandId": "b2c3d4e5-f6a7-5b6c-9d8e-0f1a2b3c4d5e",
+    "type": 1,
+    "price": 35000000,
+    "maxPrice": 38000000,
+    "minPrice": 32000000,
+    "salePrice": 33000000,
+    "dateOnSaleFrom": "2024-03-01T00:00:00Z",
+    "dateOnSaleTo": "2024-03-15T00:00:00Z",
+    "totalSales": 150,
+    "openedComments": true,
+    "stockQuantity": 50,
+    "manageStock": true,
+    "stockStatus": 1,
+    "status": 1,
+    "isSuggested": true,
+    "displayOnHomePage": true,
+    "orderOnHomePage": 1,
+    "tag": "جدید",
+    "seoTitle": "گوشی موبایل سامسونگ گلکسی S24 | خرید با بهترین قیمت",
+    "seoTitleLength": 50,
+    "metaDescription": "خرید گوشی موبایل سامسونگ گلکسی S24 با بهترین قیمت و گارانتی معتبر. این گوشی هوشمند پرچمدار با پردازنده قدرتمند و دوربین پیشرفته عرضه شده است.",
+    "metaDescriptionLength": 160,
+    "isIndexed": true,
+    "isFollowed": true,
+    "canonicalUrl": null,
+    "categories": [
+      {
+        "categoryId": "e5f6a7b8-c9d0-8e9f-2a3b-4c5d6e7f8a9b"
+      }
+    ],
+    "tags": [
+      {
+        "tagId": "004fdc9d-d6a6-4507-8518-4dba9b900822"
+      },
+      {
+        "tagId": "007566ea-38b3-4a5b-935d-87d07dfd0cb0"
+      },
+      {
+        "tagId": "008da43b-2939-4e8a-a352-b583984f87af"
+      }
+    ],
+    "features": [
+      {
+        "featureId": "62a89d67-2b01-4459-b839-c53de734e914",
+        "defaultFeatureOptionId": "0250ab52-db84-46e8-ac44-9fd1fc4fee99",
+        "position": 1,
+        "isVisible": true,
+        "isVariable": true
+      },
+      {
+        "featureId": "44edf5b3-e607-4669-a0bd-f07bbe63795f",
+        "defaultFeatureOptionId": "0263b1f9-431a-401e-9654-e65f1dc1510d",
+        "position": 2,
+        "isVisible": false,
+        "isVariable": false
+      }
+    ],
+    "medias": [],
+    "relatedProducts": [],
+    "linkedProducts": [],
+    "reviews": [
+      {
+        "productId": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+        "userId": null,
+        "title": "گوشی عالی با دوربین فوق‌العاده",
+        "reviewText": "این گوشی واقعاً عالی است. دوربین آن کیفیت بسیار بالایی دارد و پردازنده آن بسیار قدرتمند است.",
+        "rating": 5,
+        "isApproved": true
+      },
+      {
+        "productId": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+        "userId": null,
+        "title": "طراحی زیبا و کارایی بالا",
+        "reviewText": "طراحی این گوشی بسیار زیبا و مدرن است. عملکرد آن نیز بسیار خوب است.",
+        "rating": 4,
+        "isApproved": true
+      }
+    ],
+    "questions": [
+      {
+        "productId": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+        "question": "آیا این گوشی از شارژ سریع پشتیبانی می‌کند؟",
+        "answer": "می‌خواستم بدانم این مدل از شارژ سریع پشتیبانی می‌کند یا خیر؟",
+        "isActive": true
+      },
+      {
+        "productId": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+        "question": "آیا این گوشی ضد آب است؟",
+        "answer": "آیا این مدل از استاندارد IP68 برای ضد آب بودن برخوردار است؟",
+        "isActive": true
+      }
+    ],
+    "variables": [
+      {
+        "productId": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+        "mediaId": null,
+        "featureOptionId": "00236c0b-804d-4176-85da-9864bfc22289",
+        "price": 35000000,
+        "salePrice": 33000000,
+        "dateOnSaleFrom": "2024-03-01T00:00:00Z",
+        "dateOnSaleTo": "2024-03-15T00:00:00Z",
+        "productNumber": "S24-BLK-256",
+        "stockQuantity": 10,
+        "stockStatus": 1,
+        "weight": 0.168,
+        "length": 15.0,
+        "height": 0.8,
+        "width": 7.0,
+        "description": "رنگ مشکی",
+        "manageStock": true
+      },
+      {
+        "productId": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+        "mediaId": null,
+        "featureOptionId": "004fdc9d-d6a6-4507-8518-4dba9b900822",
+        "price": 37000000,
+        "salePrice": 35000000,
+        "dateOnSaleFrom": "2024-03-01T00:00:00Z",
+        "dateOnSaleTo": "2024-03-15T00:00:00Z",
+        "productNumber": "S24-BLK-512",
+        "stockQuantity": 15,
+        "stockStatus": 1,
+        "weight": 0.168,
+        "length": 15.0,
+        "height": 0.8,
+        "width": 7.0,
+        "description": "رنگ سفید",
+        "manageStock": true
+      },
+      {
+        "productId": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+        "mediaId": null,
+        "featureOptionId": "005cb54f-e5b3-4947-aa73-0f235cad09ce",
+        "price": 36000000,
+        "salePrice": 34000000,
+        "dateOnSaleFrom": "2024-03-01T00:00:00Z",
+        "dateOnSaleTo": "2024-03-15T00:00:00Z",
+        "productNumber": "S24-BLK-512",
+        "stockQuantity": 15,
+        "stockStatus": 1,
+        "weight": 0.168,
+        "length": 15.0,
+        "height": 0.8,
+        "width": 7.0,
+        "description": "رنگ آبی",
+        "manageStock": true
+      }
+    ]
+  },
+  {
+    "id": "b2c3d4e5-f6a7-5b6c-9d8e-0f1a2b3c4d5e",
+    "name": "گوشی موبایل آیفون 15 پرو",
+    "slug": "iphone-15-pro",
+    "shortDescription": "گوشی هوشمند پرچمدار اپل با پردازنده A17 Pro و دوربین 48 مگاپیکسلی",
+    "description": "گوشی موبایل آیفون 15 پرو با طراحی تیتانیومی و امکانات پیشرفته، یکی از بهترین گوشی‌های هوشمند بازار است. این گوشی مجهز به پردازنده A17 Pro، دوربین 48 مگاپیکسلی و صفحه نمایش Super Retina XDR است.",
+    "brandId": "000c7c63-ee0f-43e9-8812-9190db219d9d",
+    "type": 1,
+    "price": 45000000,
+    "maxPrice": 48000000,
+    "minPrice": 42000000,
+    "salePrice": 43000000,
+    "dateOnSaleFrom": "2024-03-01T00:00:00Z",
+    "dateOnSaleTo": "2024-03-15T00:00:00Z",
+    "totalSales": 120,
+    "openedComments": true,
+    "stockQuantity": 40,
+    "manageStock": true,
+    "stockStatus": 1,
+    "status": 1,
+    "isSuggested": true,
+    "displayOnHomePage": true,
+    "orderOnHomePage": 2,
+    "tag": "جدید",
+    "seoTitle": "گوشی موبایل آیفون 15 پرو | خرید با بهترین قیمت",
+    "seoTitleLength": 50,
+    "metaDescription": "خرید گوشی موبایل آیفون 15 پرو با بهترین قیمت و گارانتی معتبر. این گوشی هوشمند پرچمدار با پردازنده A17 Pro و دوربین 48 مگاپیکسلی عرضه شده است.",
+    "metaDescriptionLength": 160,
+    "isIndexed": true,
+    "isFollowed": true,
+    "canonicalUrl": null,
+    "categories": [
+      {
+        "categoryId": "e5f6a7b8-c9d0-8e9f-2a3b-4c5d6e7f8a9b"
+      }
+    ],
+    "tags": [
+      {
+        "tagId": "004fdc9d-d6a6-4507-8518-4dba9b900822"
+      },
+      {
+        "tagId": "007566ea-38b3-4a5b-935d-87d07dfd0cb0"
+      },
+      {
+        "tagId": "008da43b-2939-4e8a-a352-b583984f87af"
+      }
+    ],
+    "features": [
+      {
+        "featureId": "62a89d67-2b01-4459-b839-c53de734e914",
+        "defaultFeatureOptionId": "0250ab52-db84-46e8-ac44-9fd1fc4fee99",
+        "position": 1,
+        "isVisible": true,
+        "isVariable": true
+      },
+      {
+        "featureId": "44edf5b3-e607-4669-a0bd-f07bbe63795f",
+        "defaultFeatureOptionId": "0263b1f9-431a-401e-9654-e65f1dc1510d",
+        "position": 2,
+        "isVisible": false,
+        "isVariable": false
+      }
+    ],
+    "medias": [],
+    "relatedProducts": [],
+    "linkedProducts": [],
+    "reviews": [
+      {
+        "productId": "b2c3d4e5-f6a7-5b6c-9d8e-0f1a2b3c4d5e",
+        "userId": null,
+        "title": "گوشی عالی با دوربین فوق‌العاده",
+        "reviewText": "این گوشی واقعاً عالی است. دوربین آن کیفیت بسیار بالایی دارد و پردازنده آن بسیار قدرتمند است.",
+        "rating": 5,
+        "isApproved": true
+      }
+    ],
+    "questions": [
+      {
+        "productId": "b2c3d4e5-f6a7-5b6c-9d8e-0f1a2b3c4d5e",
+        "question": "آیا این گوشی از شارژ سریع پشتیبانی می‌کند؟",
+        "answer": "بله، این مدل از شارژ سریع 20 وات پشتیبانی می‌کند.",
+        "isActive": true
+      }
+    ],
+    "variables": [
+      {
+        "productId": "b2c3d4e5-f6a7-5b6c-9d8e-0f1a2b3c4d5e",
+        "mediaId": null,
+        "featureOptionId": "00236c0b-804d-4176-85da-9864bfc22289",
+        "price": 45000000,
+        "salePrice": 43000000,
+        "dateOnSaleFrom": "2024-03-01T00:00:00Z",
+        "dateOnSaleTo": "2024-03-15T00:00:00Z",
+        "productNumber": "IP15P-BLK-256",
+        "stockQuantity": 15,
+        "stockStatus": 1,
+        "weight": 0.187,
+        "length": 14.6,
+        "height": 0.78,
+        "width": 7.1,
+        "description": "رنگ مشکی تیتانیوم",
+        "manageStock": true
+      }
+    ]
+  },
+  {
+    "id": "c3d4e5f6-a7b8-6c7d-9e8f-0a1b2c3d4e5f",
+    "name": "گوشی موبایل شیائومی 14 پرو",
+    "slug": "xiaomi-14-pro",
+    "shortDescription": "گوشی هوشمند پرچمدار شیائومی با پردازنده Snapdragon 8 Gen 3",
+    "description": "گوشی موبایل شیائومی 14 پرو با طراحی مدرن و امکانات پیشرفته، یکی از بهترین گوشی‌های هوشمند بازار است. این گوشی مجهز به پردازنده Snapdragon 8 Gen 3، دوربین 50 مگاپیکسلی و صفحه نمایش AMOLED است.",
+    "brandId": "f9a0b1c2-d3e4-4f5a-6b7c-8d9e0f1a2b3c",
+    "type": 1,
+    "price": 28000000,
+    "maxPrice": 30000000,
+    "minPrice": 26000000,
+    "salePrice": 27000000,
+    "dateOnSaleFrom": "2024-03-01T00:00:00Z",
+    "dateOnSaleTo": "2024-03-15T00:00:00Z",
+    "totalSales": 200,
+    "openedComments": true,
+    "stockQuantity": 60,
+    "manageStock": true,
+    "stockStatus": 1,
+    "status": 1,
+    "isSuggested": true,
+    "displayOnHomePage": true,
+    "orderOnHomePage": 3,
+    "tag": "جدید",
+    "seoTitle": "گوشی موبایل شیائومی 14 پرو | خرید با بهترین قیمت",
+    "seoTitleLength": 50,
+    "metaDescription": "خرید گوشی موبایل شیائومی 14 پرو با بهترین قیمت و گارانتی معتبر. این گوشی هوشمند پرچمدار با پردازنده Snapdragon 8 Gen 3 و دوربین 50 مگاپیکسلی عرضه شده است.",
+    "metaDescriptionLength": 160,
+    "isIndexed": true,
+    "isFollowed": true,
+    "canonicalUrl": null,
+    "categories": [
+      {
+        "categoryId": "e5f6a7b8-c9d0-8e9f-2a3b-4c5d6e7f8a9b"
+      }
+    ],
+    "tags": [
+      {
+        "tagId": "004fdc9d-d6a6-4507-8518-4dba9b900822"
+      },
+      {
+        "tagId": "007566ea-38b3-4a5b-935d-87d07dfd0cb0"
+      },
+      {
+        "tagId": "008da43b-2939-4e8a-a352-b583984f87af"
+      }
+    ],
+    "features": [
+      {
+        "featureId": "62a89d67-2b01-4459-b839-c53de734e914",
+        "defaultFeatureOptionId": "0250ab52-db84-46e8-ac44-9fd1fc4fee99",
+        "position": 1,
+        "isVisible": true,
+        "isVariable": true
+      },
+      {
+        "featureId": "44edf5b3-e607-4669-a0bd-f07bbe63795f",
+        "defaultFeatureOptionId": "0263b1f9-431a-401e-9654-e65f1dc1510d",
+        "position": 2,
+        "isVisible": false,
+        "isVariable": false
+      }
+    ],
+    "medias": [],
+    "relatedProducts": [],
+    "linkedProducts": [],
+    "reviews": [
+      {
+        "productId": "c3d4e5f6-a7b8-6c7d-9e8f-0a1b2c3d4e5f",
+        "userId": null,
+        "title": "گوشی عالی با قیمت مناسب",
+        "reviewText": "این گوشی با این قیمت واقعاً ارزش خرید دارد. دوربین و پردازنده آن بسیار خوب است.",
+        "rating": 4,
+        "isApproved": true
+      }
+    ],
+    "questions": [
+      {
+        "productId": "c3d4e5f6-a7b8-6c7d-9e8f-0a1b2c3d4e5f",
+        "question": "آیا این گوشی از شارژ سریع پشتیبانی می‌کند؟",
+        "answer": "بله، این مدل از شارژ سریع 120 وات پشتیبانی می‌کند.",
+        "isActive": true
+      }
+    ],
+    "variables": [
+      {
+        "productId": "c3d4e5f6-a7b8-6c7d-9e8f-0a1b2c3d4e5f",
+        "mediaId": null,
+        "featureOptionId": "00236c0b-804d-4176-85da-9864bfc22289",
+        "price": 28000000,
+        "salePrice": 27000000,
+        "dateOnSaleFrom": "2024-03-01T00:00:00Z",
+        "dateOnSaleTo": "2024-03-15T00:00:00Z",
+        "productNumber": "XM14P-BLK-256",
+        "stockQuantity": 20,
+        "stockStatus": 1,
+        "weight": 0.223,
+        "length": 16.2,
+        "height": 0.8,
+        "width": 7.5,
+        "description": "رنگ مشکی",
+        "manageStock": true
+      }
+    ]
+  },
+  {
+    "id": "d4e5f6a7-b8c9-7d8e-9f0a-1b2c3d4e5f6a",
+    "name": "گوشی موبایل وان پلاس 12",
+    "slug": "oneplus-12",
+    "shortDescription": "گوشی هوشمند پرچمدار وان پلاس با پردازنده Snapdragon 8 Gen 3",
+    "description": "گوشی موبایل وان پلاس 12 با طراحی مدرن و امکانات پیشرفته، یکی از بهترین گوشی‌های هوشمند بازار است. این گوشی مجهز به پردازنده Snapdragon 8 Gen 3، دوربین 50 مگاپیکسلی و صفحه نمایش LTPO AMOLED است.",
+    "brandId": "b2c3d4e5-f6a7-5b6c-9d8e-0f1a2b3c4d5e",
+    "type": 1,
+    "price": 32000000,
+    "maxPrice": 34000000,
+    "minPrice": 30000000,
+    "salePrice": 31000000,
+    "dateOnSaleFrom": "2024-03-01T00:00:00Z",
+    "dateOnSaleTo": "2024-03-15T00:00:00Z",
+    "totalSales": 180,
+    "openedComments": true,
+    "stockQuantity": 45,
+    "manageStock": true,
+    "stockStatus": 1,
+    "status": 1,
+    "isSuggested": true,
+    "displayOnHomePage": true,
+    "orderOnHomePage": 4,
+    "tag": "جدید",
+    "seoTitle": "گوشی موبایل وان پلاس 12 | خرید با بهترین قیمت",
+    "seoTitleLength": 50,
+    "metaDescription": "خرید گوشی موبایل وان پلاس 12 با بهترین قیمت و گارانتی معتبر. این گوشی هوشمند پرچمدار با پردازنده Snapdragon 8 Gen 3 و دوربین 50 مگاپیکسلی عرضه شده است.",
+    "metaDescriptionLength": 160,
+    "isIndexed": true,
+    "isFollowed": true,
+    "canonicalUrl": null,
+    "categories": [
+      {
+        "categoryId": "e5f6a7b8-c9d0-8e9f-2a3b-4c5d6e7f8a9b"
+      }
+    ],
+    "tags": [
+      {
+        "tagId": "004fdc9d-d6a6-4507-8518-4dba9b900822"
+      },
+      {
+        "tagId": "007566ea-38b3-4a5b-935d-87d07dfd0cb0"
+      },
+      {
+        "tagId": "008da43b-2939-4e8a-a352-b583984f87af"
+      }
+    ],
+    "features": [
+      {
+        "featureId": "62a89d67-2b01-4459-b839-c53de734e914",
+        "defaultFeatureOptionId": "0250ab52-db84-46e8-ac44-9fd1fc4fee99",
+        "position": 1,
+        "isVisible": true,
+        "isVariable": true
+      },
+      {
+        "featureId": "44edf5b3-e607-4669-a0bd-f07bbe63795f",
+        "defaultFeatureOptionId": "0263b1f9-431a-401e-9654-e65f1dc1510d",
+        "position": 2,
+        "isVisible": false,
+        "isVariable": false
+      }
+    ],
+    "medias": [],
+    "relatedProducts": [],
+    "linkedProducts": [],
+    "reviews": [
+      {
+        "productId": "d4e5f6a7-b8c9-7d8e-9f0a-1b2c3d4e5f6a",
+        "userId": null,
+        "title": "گوشی عالی با شارژ سریع",
+        "reviewText": "این گوشی واقعاً عالی است. شارژ سریع آن بسیار خوب است و باتری آن طولانی مدت کار می‌کند.",
+        "rating": 5,
+        "isApproved": true
+      }
+    ],
+    "questions": [
+      {
+        "productId": "d4e5f6a7-b8c9-7d8e-9f0a-1b2c3d4e5f6a",
+        "question": "آیا این گوشی از شارژ سریع پشتیبانی می‌کند؟",
+        "answer": "بله، این مدل از شارژ سریع 100 وات پشتیبانی می‌کند.",
+        "isActive": true
+      }
+    ],
+    "variables": [
+      {
+        "productId": "d4e5f6a7-b8c9-7d8e-9f0a-1b2c3d4e5f6a",
+        "mediaId": null,
+        "featureOptionId": "00236c0b-804d-4176-85da-9864bfc22289",
+        "price": 32000000,
+        "salePrice": 31000000,
+        "dateOnSaleFrom": "2024-03-01T00:00:00Z",
+        "dateOnSaleTo": "2024-03-15T00:00:00Z",
+        "productNumber": "OP12-BLK-256",
+        "stockQuantity": 25,
+        "stockStatus": 1,
+        "weight": 0.220,
+        "length": 16.3,
+        "height": 0.9,
+        "width": 7.5,
+        "description": "رنگ مشکی",
+        "manageStock": true
+      }
+    ]
+  },
+  {
+    "id": "e5f6a7b8-c9d0-8e9f-0a1b-2c3d4e5f6a7b",
+    "name": "گوشی موبایل گوگل پیکسل 8 پرو",
+    "slug": "google-pixel-8-pro",
+    "shortDescription": "گوشی هوشمند پرچمدار گوگل با پردازنده Tensor G3",
+    "description": "گوشی موبایل گوگل پیکسل 8 پرو با طراحی مدرن و امکانات پیشرفته، یکی از بهترین گوشی‌های هوشمند بازار است. این گوشی مجهز به پردازنده Tensor G3، دوربین 50 مگاپیکسلی و صفحه نمایش LTPO OLED است.",
+    "brandId": "c5832df8-cb38-4132-a66b-65ca1d6ee85b",
+    "type": 1,
+    "price": 38000000,
+    "maxPrice": 40000000,
+    "minPrice": 36000000,
+    "salePrice": 37000000,
+    "dateOnSaleFrom": "2024-03-01T00:00:00Z",
+    "dateOnSaleTo": "2024-03-15T00:00:00Z",
+    "totalSales": 100,
+    "openedComments": true,
+    "stockQuantity": 30,
+    "manageStock": true,
+    "stockStatus": 1,
+    "status": 1,
+    "isSuggested": true,
+    "displayOnHomePage": true,
+    "orderOnHomePage": 5,
+    "tag": "جدید",
+    "seoTitle": "گوشی موبایل گوگل پیکسل 8 پرو | خرید با بهترین قیمت",
+    "seoTitleLength": 50,
+    "metaDescription": "خرید گوشی موبایل گوگل پیکسل 8 پرو با بهترین قیمت و گارانتی معتبر. این گوشی هوشمند پرچمدار با پردازنده Tensor G3 و دوربین 50 مگاپیکسلی عرضه شده است.",
+    "metaDescriptionLength": 160,
+    "isIndexed": true,
+    "isFollowed": true,
+    "canonicalUrl": null,
+    "categories": [
+      {
+        "categoryId": "e5f6a7b8-c9d0-8e9f-2a3b-4c5d6e7f8a9b"
+      }
+    ],
+    "tags": [
+      {
+        "tagId": "004fdc9d-d6a6-4507-8518-4dba9b900822"
+      },
+      {
+        "tagId": "007566ea-38b3-4a5b-935d-87d07dfd0cb0"
+      },
+      {
+        "tagId": "008da43b-2939-4e8a-a352-b583984f87af"
+      }
+    ],
+    "features": [
+      {
+        "featureId": "62a89d67-2b01-4459-b839-c53de734e914",
+        "defaultFeatureOptionId": "0250ab52-db84-46e8-ac44-9fd1fc4fee99",
+        "position": 1,
+        "isVisible": true,
+        "isVariable": true
+      },
+      {
+        "featureId": "44edf5b3-e607-4669-a0bd-f07bbe63795f",
+        "defaultFeatureOptionId": "0263b1f9-431a-401e-9654-e65f1dc1510d",
+        "position": 2,
+        "isVisible": false,
+        "isVariable": false
+      }
+    ],
+    "medias": [],
+    "relatedProducts": [],
+    "linkedProducts": [],
+    "reviews": [
+      {
+        "productId": "e5f6a7b8-c9d0-8e9f-0a1b-2c3d4e5f6a7b",
+        "userId": null,
+        "title": "گوشی عالی با دوربین فوق‌العاده",
+        "reviewText": "این گوشی واقعاً عالی است. دوربین آن کیفیت بسیار بالایی دارد و نرم‌افزار آن بسیار روان است.",
+        "rating": 5,
+        "isApproved": true
+      }
+    ],
+    "questions": [
+      {
+        "productId": "e5f6a7b8-c9d0-8e9f-0a1b-2c3d4e5f6a7b",
+        "question": "آیا این گوشی از شارژ سریع پشتیبانی می‌کند؟",
+        "answer": "بله، این مدل از شارژ سریع 30 وات پشتیبانی می‌کند.",
+        "isActive": true
+      }
+    ],
+    "variables": [
+      {
+        "productId": "e5f6a7b8-c9d0-8e9f-0a1b-2c3d4e5f6a7b",
+        "mediaId": null,
+        "featureOptionId": "00236c0b-804d-4176-85da-9864bfc22289",
+        "price": 38000000,
+        "salePrice": 37000000,
+        "dateOnSaleFrom": "2024-03-01T00:00:00Z",
+        "dateOnSaleTo": "2024-03-15T00:00:00Z",
+        "productNumber": "P8P-BLK-256",
+        "stockQuantity": 15,
+        "stockStatus": 1,
+        "weight": 0.212,
+        "length": 16.2,
+        "height": 0.88,
+        "width": 7.6,
+        "description": "رنگ مشکی",
+        "manageStock": true
+      }
+    ]
+  }
+] 

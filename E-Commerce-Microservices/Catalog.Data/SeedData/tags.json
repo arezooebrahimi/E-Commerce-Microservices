@@ -1,0 +1,202 @@
+[
+  {
+    "id": "00236c0b-804d-4176-85da-9864bfc22289",
+    "name": "گیمینگ",
+    "description": "محصولات مخصوص بازی و گیمینگ",
+    "slug": "gaming",
+    "featuringImageName": "gaming-tag.jpg",
+    "order": 1,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "004fdc9d-d6a6-4507-8518-4dba9b900822",
+    "name": "حرفه‌ای",
+    "description": "محصولات حرفه‌ای و سطح بالا",
+    "slug": "professional",
+    "featuringImageName": "professional-tag.jpg",
+    "order": 2,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "005cb54f-e5b3-4947-aa73-0f235cad09ce",
+    "name": "ارزان",
+    "description": "محصولات با قیمت مناسب",
+    "slug": "budget",
+    "featuringImageName": "budget-tag.jpg",
+    "order": 3,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "007566ea-38b3-4a5b-935d-87d07dfd0cb0",
+    "name": "پرچمدار",
+    "description": "محصولات پرچمدار و برتر",
+    "slug": "flagship",
+    "featuringImageName": "flagship-tag.jpg",
+    "order": 4,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "008da43b-2939-4e8a-a352-b583984f87af",
+    "name": "بازی‌های سنگین",
+    "description": "مناسب برای اجرای بازی‌های سنگین",
+    "slug": "heavy-gaming",
+    "featuringImageName": "heavy-gaming-tag.jpg",
+    "order": 5,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "00bc9855-dc2e-4809-b3ab-dcc87a7829a8",
+    "name": "اداری",
+    "description": "مناسب برای کارهای اداری",
+    "slug": "office",
+    "featuringImageName": "office-tag.jpg",
+    "order": 6,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "00de5915-a02f-4d01-8f99-166616c36b02",
+    "name": "دانشجویی",
+    "description": "مناسب برای دانشجویان",
+    "slug": "student",
+    "featuringImageName": "student-tag.jpg",
+    "order": 7,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "00faaf6c-fafa-484f-8e97-bb73ee3ccac0",
+    "name": "گرافیکی",
+    "description": "مناسب برای کارهای گرافیکی",
+    "slug": "graphic-design",
+    "featuringImageName": "graphic-design-tag.jpg",
+    "order": 8,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "0108da38-89a5-4e71-b988-1b7daf084798",
+    "name": "فیلمبرداری",
+    "description": "مناسب برای فیلمبرداری و تدوین",
+    "slug": "video-editing",
+    "featuringImageName": "video-editing-tag.jpg",
+    "order": 9,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "0118f623-d46b-4bfa-a208-551eedf5bc65",
+    "name": "موسیقی",
+    "description": "مناسب برای کارهای موسیقی",
+    "slug": "music",
+    "featuringImageName": "music-tag.jpg",
+    "order": 10,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "0136dbde-ebac-4eff-b049-db6d399ddf49",
+    "name": "سفر",
+    "description": "مناسب برای سفر و مسافرت",
+    "slug": "travel",
+    "featuringImageName": "travel-tag.jpg",
+    "order": 11,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "0172bc13-e537-4e9d-98bb-3c699e4a01a3",
+    "name": "ورزشی",
+    "description": "مناسب برای فعالیت‌های ورزشی",
+    "slug": "sports",
+    "featuringImageName": "sports-tag.jpg",
+    "order": 12,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "017660b9-f2a8-41eb-bf66-6654c880a352",
+    "name": "عکاسی",
+    "description": "مناسب برای عکاسی حرفه‌ای",
+    "slug": "photography",
+    "featuringImageName": "photography-tag.jpg",
+    "order": 13,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "01b893ea-3c8a-4572-a260-bc4fde4264d1",
+    "name": "استریمینگ",
+    "description": "مناسب برای استریم و پخش زنده",
+    "slug": "streaming",
+    "featuringImageName": "streaming-tag.jpg",
+    "order": 14,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "01d3048e-5c51-4899-aecb-25ebbdb4db2d",
+    "name": "مولتی‌مدیا",
+    "description": "مناسب برای پخش محتوای چندرسانه‌ای",
+    "slug": "multimedia",
+    "featuringImageName": "multimedia-tag.jpg",
+    "order": 15,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "01f0dcdf-0294-4897-b6d8-6de5920567e8",
+    "name": "بازی‌های سبک",
+    "description": "مناسب برای بازی‌های سبک و معمولی",
+    "slug": "casual-gaming",
+    "featuringImageName": "casual-gaming-tag.jpg",
+    "order": 16,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "01fb65f7-60fe-456e-96c6-b4b4e99530d8",
+    "name": "طراحی",
+    "description": "مناسب برای طراحی و معماری",
+    "slug": "design",
+    "featuringImageName": "design-tag.jpg",
+    "order": 17,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "02051996-09b0-4b62-bd25-9ceebaf4c337",
+    "name": "برنامه‌نویسی",
+    "description": "مناسب برای برنامه‌نویسی و توسعه",
+    "slug": "programming",
+    "featuringImageName": "programming-tag.jpg",
+    "order": 18,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "02099f4d-3c97-43b3-82b7-3d6c93d67430",
+    "name": "هوش مصنوعی",
+    "description": "مناسب برای کار با هوش مصنوعی",
+    "slug": "ai",
+    "featuringImageName": "ai-tag.jpg",
+    "order": 19,
+    "products": [],
+    "medias": []
+  },
+  {
+    "id": "02228f38-0e5d-4d9b-9e20-0a30a605794f",
+    "name": "داده‌کاوی",
+    "description": "مناسب برای تحلیل داده و داده‌کاوی",
+    "slug": "data-analysis",
+    "featuringImageName": "data-analysis-tag.jpg",
+    "order": 20,
+    "products": [],
+    "medias": []
+  }
+] 
