@@ -1,5 +1,6 @@
 ﻿
 using Common.Attributes;
+using FileManager.Models.Mongodb;
 using FileManager.Services.Abstract;
 using FileManager.Services.Concrete;
 
@@ -12,6 +13,8 @@ public class StartupDIServiceInstaller : IServiceInstaller
     {
         services.AddScoped<IFileService, FileService>();
         services.AddScoped<IArvanFileService, ArvanFileService>();
+
+        services.Configure<MongoDbSettings>(configuration.GetSection("MongoDB"));
         return Task.CompletedTask;
     }
 }
