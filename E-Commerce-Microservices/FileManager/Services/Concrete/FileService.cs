@@ -16,24 +16,19 @@ namespace FileManager.Services.Concrete
             }
         }
 
-        public async Task<string> UploadFileAsync(IFormFile file)
+        public async Task UploadFileAsync(IFormFile file,string fileName,string filePath)
         {
             if (file == null || file.Length == 0)
                 throw new ArgumentException("فایل معتبر نیست.");
-
-            var fileName = GenerateNewFileName(file);
-            var filePath = Path.Combine(_uploadFolderPath, fileName);
 
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await file.CopyToAsync(stream);
             }
-
-            return fileName;
         }
 
 
-        private string GenerateNewFileName(IFormFile file)
+        public string GenerateNewFileName(IFormFile file)
         {
             var originalFileName = Path.GetFileNameWithoutExtension(file.FileName);
             var extension = Path.GetExtension(file.FileName);

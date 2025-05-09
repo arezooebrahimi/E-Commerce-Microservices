@@ -8,33 +8,50 @@ namespace FileManager.Controllers
     [ApiController]
     public class MediaController : ControllerBase
     {
+        private readonly IArvanFileService _arvanFileService;
         private readonly IFileService _fileService;
+        private readonly string _uploadFolderPath;
 
-        public MediaController(IFileService fileService)
+        public MediaController(IArvanFileService arvanFileService,IFileService fileService)
         {
+            _arvanFileService = arvanFileService;
             _fileService = fileService;
+            _uploadFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "UploadedFiles");
         }
 
 
         [HttpPost("upload")]
-        public async Task<ApiResult> UploadFile([FromForm] IFormFile file)
+        public async Task<ApiResult<string>> UploadFile([FromForm] IFormFile file)
         {
             if (file == null || file.Length == 0)
-            {
                 return BadRequest("No file uploaded.");
-            }
 
-            var fileUrl = await _fileService.UploadFileAsync(file);
-            return Ok();
+            var fileName = _fileService.GenerateNewFileName(file);
+            var filePath = Path.Combine(_uploadFolderPath, fileName);
+            await _fileService.UploadFileAsync(file, fileName, filePath);
+
+            try
+            {
+                var uploadedUrl = await _arvanFileService.UploadFileAsync(fileName, filePath, file.ContentType);
+                return Ok(uploadedUrl);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            finally
+            {
+                _fileService.DeleteFile(fileName);
+            }
         }
 
 
         [HttpDelete("{fileName}")]
-        public ApiResult<string> DeleteFile(string fileName)
+        public async Task<ApiResult<string>> DeleteFile(string fileName)
         {
             try
             {
-                _fileService.DeleteFile(fileName);
+                await _arvanFileService.DeleteFileAsync(fileName);
                 return Ok("File deleted successfully.");
             }
             catch (Exception ex)

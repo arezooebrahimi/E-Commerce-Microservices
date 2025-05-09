@@ -11,6 +11,7 @@ public class StartupDIServiceInstaller : IServiceInstaller
     public Task Install(IServiceCollection services, IConfiguration configuration, IWebHostEnvironment hostEnvironment)
     {
         services.AddScoped<IFileService, FileService>();
+        services.AddScoped<IArvanFileService, ArvanFileService>();
         return Task.CompletedTask;
     }
 }

@@ -2,7 +2,8 @@
 {
     public interface IFileService
     {
-        Task<string> UploadFileAsync(IFormFile file);
+        Task UploadFileAsync(IFormFile file,string fileName,string filePath);
         bool DeleteFile(string fileName);
+        string GenerateNewFileName(IFormFile file);
     }
 }
