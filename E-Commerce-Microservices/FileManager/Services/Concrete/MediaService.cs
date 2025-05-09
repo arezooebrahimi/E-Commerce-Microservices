@@ -78,6 +78,7 @@ namespace FileManager.Services.Concrete
                 catch (Exception ex)
                 {
                     _logger.LogError($"{ex.Message}");
+                    throw new ArgumentException(ex.Message);
                 }
                 finally
                 {

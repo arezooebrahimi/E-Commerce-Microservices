@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json.Serialization;
 
-namespace FileManager.API.WebFramework.Api
+namespace Common.WebFramework.Api
 {
     public class ApiResult
     {

@@ -1,5 +1,5 @@
 ﻿using Common.Entities.FileManager;
-using FileManager.API.WebFramework.Api;
+using Common.WebFramework.Api;
 using FileManager.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 

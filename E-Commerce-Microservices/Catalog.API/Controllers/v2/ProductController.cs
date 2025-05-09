@@ -1,5 +1,5 @@
 ﻿using Asp.Versioning;
-using Catalog.API.WebFramework.Api;
+using Common.WebFramework.Api;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Controllers.v2

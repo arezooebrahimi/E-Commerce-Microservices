@@ -1,10 +1,9 @@
-﻿
-using Common.Exceptions;
+﻿using Common.Exceptions;
 using Common.WebFramework.Api;
 using System.Net;
 using System.Text.Json;
 
-namespace Catalog.API.Middlewares
+namespace Admin.Middlewares
 {
     public static class CustomExceptionMiddlewareExtensions
     {
