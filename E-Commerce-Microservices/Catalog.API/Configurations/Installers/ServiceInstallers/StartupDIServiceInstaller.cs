@@ -1,4 +1,6 @@
-﻿using Catalog.Data.Repositories.EntityFramework.Abstract;
+﻿using Catalog.Data.Repositories.Dapper.Abstract;
+using Catalog.Data.Repositories.Dapper.Concrete;
+using Catalog.Data.Repositories.EntityFramework.Abstract;
 using Catalog.Data.Repositories.EntityFramework.Concrete;
 using Catalog.Service.v1.Abstract;
 using Catalog.Service.v1.Concrete;
@@ -13,7 +15,11 @@ public class StartupDIServiceInstaller : IServiceInstaller
     {
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
-       
+
+
+        services.AddScoped<Service.v2.Abstract.ICategoryService, Service.v2.Concrete.CategoryService>();
+        services.AddScoped<ICategoryDapperRepository, CategoryDapperRepository>();
+
         return Task.CompletedTask;
     }
 }
