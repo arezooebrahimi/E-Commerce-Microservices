@@ -1,6 +1,7 @@
 ﻿using Catalog.Data.Repositories.EntityFramework.Abstract;
 using Catalog.Service.v1.Abstract;
 using Common.Dtos.Catalog.Product;
+using Common.Dtos.Common;
 using Common.Entities;
 using Common.Utilities;
 
@@ -17,13 +18,13 @@ namespace Catalog.Service.v1.Concrete
         }
 
 
-        public async Task<List<ProductsResponse>> GetProducts(GetProductsRequest req)
+        public async Task<PagedResponse<ProductsResponse>> GetProducts(GetProductsRequest req)
         {
-            var response = new List<ProductsResponse>();
+            var response = new PagedResponse<ProductsResponse>();
             long? price = 0;
             long? salePrice = 0;
             var now = DateTime.Now;
-            var products = await _productRepository.GetProducts(req);
+            var (products, total) = await _productRepository.GetProducts(req);
 
             var commentsAndRating = await _productRepository.GetProductsRaitingAndReviewsCount(products.Select(p => p.Id).ToList());
             
@@ -38,7 +39,7 @@ namespace Catalog.Service.v1.Concrete
                     salePrice = product.Variables.First().DateOnSaleFrom <= now && now <= product.Variables.First().DateOnSaleTo ? product.Variables.First().SalePrice : product.Variables.First().Price;
                 }
 
-                response.Add(new ProductsResponse
+                response.Items.Add(new ProductsResponse
                 {
                     Name = product.Name,
                     Slug = product.Slug,
@@ -48,6 +49,7 @@ namespace Catalog.Service.v1.Concrete
                     ReviewsCount = commentsAndRating.Where(p => p.ProductId == product.Id).First().ReviewsCount
                 });
             }
+            response.Total = total;
 
             return response;
         }

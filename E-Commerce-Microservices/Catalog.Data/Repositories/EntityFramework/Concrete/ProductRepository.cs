@@ -2,6 +2,7 @@
 using Catalog.Data.Repositories.EntityFramework.Abstract;
 using Common.Dtos.Catalog.Product;
 using Common.Entities;
+using Common.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -16,25 +17,42 @@ namespace Catalog.Data.Repositories.EntityFramework.Concrete
         }
 
 
-        public async Task<List<ProductsDto>> GetProducts(GetProductsRequest req)
+        public async Task<(List<ProductsDto> Items, int Total)> GetProducts(GetProductsRequest req)
         {
-            var products = await _context.Products
-                .Include(v=>v.Variables.OrderBy(v=>v.Price).Take(1))
-                .Where(v=>!v.IsDeleted)
-                .Select(p=> new ProductsDto
-                {
-                   Id =  p.Id,
-                   Slug = p.Slug,
-                   Type = p.Type,
-                   Name = p.Name,
-                   Price = p.Price,
-                   SalePrice = p.SalePrice,
-                   DateOnSaleFrom = p.DateOnSaleFrom,
-                   DateOnSaleTo = p.DateOnSaleTo,
-                   Variables = p.Variables
-                }).Take(req.Limit).Skip(req.Offset).AsNoTracking().ToListAsync();
+            var query = _context.Products
+              .Include(v => v.Variables.OrderBy(v => v.Price).Take(1))
+              .Where(p => p.IsDeleted == false)
+              .AsQueryable();
 
-            return products;
+            if (req.Filters != null && req.Filters.Any())
+                query = DynamicFilterHelper.ApplyDynamicFilters(query, req.Filters);
+
+            if (!string.IsNullOrEmpty(req.Sort?.Column))
+                query = DynamicSortHelper.ApplySorting(query, req.Sort);
+
+
+            var total = await query.CountAsync();
+
+
+            var products = await query
+            .Select(p => new ProductsDto
+            {
+                Id = p.Id,
+                Slug = p.Slug,
+                Type = p.Type,
+                Name = p.Name,
+                Price = p.Price,
+                SalePrice = p.SalePrice,
+                DateOnSaleFrom = p.DateOnSaleFrom,
+                DateOnSaleTo = p.DateOnSaleTo,
+                Variables = p.Variables
+            })
+            .Skip(req.Offset)
+            .Take(req.Limit)
+            .AsNoTracking()
+            .ToListAsync();
+
+            return (products,total);
         }
 
         public async Task<Product?> GetProductDetailsBySlug(string slug)

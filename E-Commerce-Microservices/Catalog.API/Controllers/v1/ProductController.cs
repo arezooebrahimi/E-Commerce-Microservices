@@ -2,6 +2,7 @@
 using Catalog.API.WebFramework.Api;
 using Catalog.Service.v1.Abstract;
 using Common.Dtos.Catalog.Product;
+using Common.Dtos.Common;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Controllers.v1
@@ -19,7 +20,7 @@ namespace Catalog.API.Controllers.v1
 
 
         [HttpPost("[action]")]
-        public async Task<ApiResult<List<ProductsResponse>>> Get(GetProductsRequest req)
+        public async Task<ApiResult<PagedResponse<ProductsResponse>>> Get(GetProductsRequest req)
         {
             var response = await _productService.GetProducts(req);
             return Ok(response);
