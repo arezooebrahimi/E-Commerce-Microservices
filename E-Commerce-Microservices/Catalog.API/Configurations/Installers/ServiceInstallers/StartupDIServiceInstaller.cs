@@ -20,6 +20,9 @@ public class StartupDIServiceInstaller : IServiceInstaller
         services.AddScoped<Service.v2.Abstract.ICategoryService, Service.v2.Concrete.CategoryService>();
         services.AddScoped<ICategoryDapperRepository, CategoryDapperRepository>();
 
+        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IProductService, ProductService>();
+
         return Task.CompletedTask;
     }
 }

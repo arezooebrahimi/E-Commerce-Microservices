@@ -1,5 +1,7 @@
 ﻿using Asp.Versioning;
 using Catalog.API.WebFramework.Api;
+using Catalog.Service.v1.Abstract;
+using Common.Dtos.Catalog.Product;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Controllers.v1
@@ -9,39 +11,26 @@ namespace Catalog.API.Controllers.v1
     [ApiController]
     public class ProductController : ControllerBase
     {
-        [HttpGet("[action]")]
-        public ApiResult<string> Get()
+        private readonly IProductService _productService;
+        public ProductController(IProductService productServic)
         {
-            //var y = 0;
-            //var x = 5 / y;
-            return Ok("get all products");
+            _productService = productServic;
         }
 
-        [HttpGet("[action]")]
-        public ApiResult<string> GetById()
-        {
-            return Ok("get product by id");
-        }
 
         [HttpPost("[action]")]
-        public ApiResult<string> Create()
+        public async Task<ApiResult<List<ProductsResponse>>> Get(GetProductsRequest req)
         {
-            return Ok("create a new product");
+            var response = await _productService.GetProducts(req);
+            return Ok(response);
         }
 
 
-        [HttpPut("[action]")]
-        public ApiResult<string> Update()
+        [HttpGet("[action]/{slug}")]
+        public async Task<ApiResult<ProductDetailsResponse>> Get(string slug)
         {
-            return Ok("update product by id");
+            var response = await _productService.GetProductDetails(slug);
+            return Ok(response);
         }
-
-
-        [HttpDelete("[action]")]
-        public ApiResult<string> Delete()
-        {
-            return Ok("delete product by id");
-        }
-
     }
 }
