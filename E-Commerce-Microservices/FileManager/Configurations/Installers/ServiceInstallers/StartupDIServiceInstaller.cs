@@ -15,6 +15,9 @@ public class StartupDIServiceInstaller : IServiceInstaller
         services.AddScoped<IArvanFileService, ArvanFileService>();
 
         services.Configure<MongoDbSettings>(configuration.GetSection("MongoDB"));
+        services.AddScoped<IMediaService, MediaService>();
+        services.AddScoped<IImageProcessingService, ImageProcessingService>();
+
         return Task.CompletedTask;
     }
 }

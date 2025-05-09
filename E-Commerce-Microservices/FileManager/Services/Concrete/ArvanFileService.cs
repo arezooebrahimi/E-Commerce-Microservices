@@ -1,4 +1,5 @@
-﻿using Amazon.Runtime;
+﻿using Amazon;
+using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.Model;
 using FileManager.Services.Abstract;
@@ -16,6 +17,8 @@ namespace FileManager.Services.Concrete
             var accessKey = configuration["ArvanStorage:AccessKey"];
             var secretKey = configuration["ArvanStorage:SecretKey"];
             var serviceUrl = configuration["ArvanStorage:ServiceURL"];
+            var region = configuration["ArvanStorage:Region"];
+
             _bucketName = configuration["ArvanStorage:BucketName"];
 
             if (string.IsNullOrEmpty(accessKey) || string.IsNullOrEmpty(secretKey) || string.IsNullOrEmpty(_bucketName))
@@ -35,17 +38,18 @@ namespace FileManager.Services.Concrete
             _s3Client = new AmazonS3Client(awsCredentials, config);
         }
 
-        public async Task<string> UploadFileAsync(string fileName,string filePath,string contentType)
+        public async Task<string> UploadFileAsync(string fileName,string filePath)
         {
             if (!File.Exists(filePath))
                 throw new FileNotFoundException("فایل پیدا نشد.", filePath);
 
+            string folderName = DateTime.Now.ToString("MM-yyyy");
+            string key = $"{folderName}/{fileName}";
             var request = new PutObjectRequest
             {
                 BucketName = _bucketName,
-                Key = fileName,
+                Key = key ,
                 FilePath = filePath,
-                ContentType = contentType,
                 CannedACL = S3CannedACL.PublicRead,
                 AutoCloseStream = true
             };
@@ -54,7 +58,7 @@ namespace FileManager.Services.Concrete
 
             if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
             {
-                return $"https://{_bucketName}.s3.ir-thr-at1.arvanstorage.ir/{fileName}";
+                return key;
             }
             else
             {
@@ -72,5 +76,7 @@ namespace FileManager.Services.Concrete
 
             var response = await _s3Client.DeleteObjectAsync(request);
         }
+
+        //return $"https://{_bucketName}.s3.ir-thr-at1.arvanstorage.ir/{fileName}";
     }
 }

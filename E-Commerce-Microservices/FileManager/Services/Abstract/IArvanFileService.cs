@@ -2,7 +2,7 @@
 {
     public interface IArvanFileService
     {
-        Task<string> UploadFileAsync(string fileName, string filePath,string contentType);
+        Task<string> UploadFileAsync(string fileName, string filePath);
         Task DeleteFileAsync(string fileName);
     }
 }

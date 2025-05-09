@@ -1,6 +1,8 @@
-﻿using FileManager.API.WebFramework.Api;
+﻿using Common.Entities.FileManager;
+using FileManager.API.WebFramework.Api;
 using FileManager.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace FileManager.Controllers
 {
@@ -8,56 +10,50 @@ namespace FileManager.Controllers
     [ApiController]
     public class MediaController : ControllerBase
     {
-        private readonly IArvanFileService _arvanFileService;
-        private readonly IFileService _fileService;
-        private readonly string _uploadFolderPath;
-
-        public MediaController(IArvanFileService arvanFileService,IFileService fileService)
+        private readonly IMediaService _mediaService;
+        public MediaController(IMediaService mediaService)
         {
-            _arvanFileService = arvanFileService;
-            _fileService = fileService;
-            _uploadFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "UploadedFiles");
+            _mediaService = mediaService;
         }
 
 
         [HttpPost("upload")]
-        public async Task<ApiResult<string>> UploadFile([FromForm] IFormFile file)
+        public async Task<ApiResult<List<string>>> UploadFile([FromForm] List<IFormFile> files)
         {
-            if (file == null || file.Length == 0)
+            if (files.Count == 0)
                 return BadRequest("No file uploaded.");
 
-            var fileName = _fileService.GenerateNewFileName(file);
-            var filePath = Path.Combine(_uploadFolderPath, fileName);
-            await _fileService.UploadFileAsync(file, fileName, filePath);
-
-            try
-            {
-                var uploadedUrl = await _arvanFileService.UploadFileAsync(fileName, filePath, file.ContentType);
-                return Ok(uploadedUrl);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            finally
-            {
-                _fileService.DeleteFile(fileName);
-            }
+           var response = await _mediaService.UploadFilesAsync(files);
+            return Ok(response);
         }
 
 
-        [HttpDelete("{fileName}")]
-        public async Task<ApiResult<string>> DeleteFile(string fileName)
+        [HttpGet]
+        public async Task<ApiResult<List<MediaDocument>>> Get()
         {
-            try
-            {
-                await _arvanFileService.DeleteFileAsync(fileName);
-                return Ok("File deleted successfully.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"File deletion failed: {ex.Message}");
-            }
+            var medias = await _mediaService.GetAllAsync();
+            return Ok(medias);
+        }
+
+
+        [HttpGet("{id}")]
+        public async Task<ApiResult<MediaDocument>> GetById(string id)
+        {
+            var media = await _mediaService.GetByIdAsync(id);
+            if (media == null)
+                return NotFound();
+
+            return Ok(media);
+        }
+
+
+        [HttpDelete("{id}")]
+        public async Task<ApiResult> DeleteFile(string id)
+        {
+            var response = await _mediaService.DeleteAsync(id);
+            if(response)
+                return Ok();
+            return BadRequest();
         }
     }
 }
