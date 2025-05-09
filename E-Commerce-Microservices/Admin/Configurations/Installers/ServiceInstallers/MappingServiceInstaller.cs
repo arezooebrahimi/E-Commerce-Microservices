@@ -1,0 +1,16 @@
+﻿using Admin.Configurations.Installers;
+using Admin.Mappings;
+using Common.Attributes;
+
+namespace Catalog.API.Configurations.Installers.ServiceInstallers;
+
+[InstallerOrder(Order = 9)]
+public class MappingServiceInstaller : IServiceInstaller
+{
+    public Task Install(IServiceCollection services, IConfiguration configuration, IWebHostEnvironment hostEnvironment)
+    {
+        services.AddAutoMapper(typeof(CategoryMappingProfile).Assembly);
+
+        return Task.CompletedTask;
+    }
+}

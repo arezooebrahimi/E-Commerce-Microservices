@@ -1,4 +1,5 @@
-﻿using Common.Entities;
+﻿using Common.Data.Configurations;
+using Common.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -35,6 +36,27 @@ namespace Common.Contexts
             }
 
             base.OnConfiguring(optionsBuilder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfiguration(new CategoryEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductCategoryEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductTagEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new FeatureEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new FeatureOptionEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductVariableEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductRelatedEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoryMediaEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductMediaEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new TagMediaEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductFeatureEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductReviewEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductQuestionEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new TagEntityConfiguration());
         }
     }
 }
