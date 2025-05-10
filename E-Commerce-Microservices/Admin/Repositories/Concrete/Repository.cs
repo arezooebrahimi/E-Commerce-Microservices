@@ -21,10 +21,11 @@ namespace Admin.Repositories.Concrete
         public async Task<(List<T> Items, int Total)> GetAllPaginateAsync(PagedRequest req)
         {
             IQueryable<T> query = _dbSet.AsQueryable();
-
+         
             if (req.Filters != null && req.Filters.Any())
-                query = DynamicFilterHelper.ApplyDynamicFilters(query, req.Filters);
+                query = DynamicFilterHelper.ApplyDynamicFilters(query, req.Filters!);
 
+            query = DynamicIncludeHelper.ApplyIncludes(query, new List<string> { "Parent" });
             var total = await query.CountAsync();
 
             if (!string.IsNullOrEmpty(req.Sort?.Column))
