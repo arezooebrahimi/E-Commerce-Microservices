@@ -1,0 +1,21 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "FileManager.Grpc";
+
+service FileService {
+  rpc UploadFiles (UploadFilesRequest) returns (UploadFilesReply);
+}
+
+message FileItem {
+  bytes fileData = 1;       // محتوای فایل
+  string fileName = 2;      // نام فایل (مثلا abc.jpg)
+  string contentType = 3;   // نوع فایل (image/jpeg یا application/pdf)
+}
+
+message UploadFilesRequest {
+  repeated FileItem files = 1; // لیست فایل‌ها
+}
+
+message UploadFilesReply {
+  repeated string fileIds = 1; // لیست شناسه‌های ذخیره شده
+}
