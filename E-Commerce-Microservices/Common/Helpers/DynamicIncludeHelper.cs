@@ -1,72 +1,35 @@
-﻿using Common.Dtos.Common;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace Common.Helpers
 {
     public static class DynamicIncludeHelper
     {
-        public static IQueryable<T> ApplyIncludes<T>(IQueryable<T> query, Dictionary<string, FilterOptions> filters) where T : class
+        public static IQueryable<T> ApplyIncludes<T>(IQueryable<T> query, IEnumerable<string> includePaths) where T : class
         {
-            var includePaths = filters.Keys
-                .Select(key => GetIncludePath(key))
-                .Where(path => !string.IsNullOrEmpty(path))
-                .Distinct();
-
-            foreach (var path in includePaths)
+            foreach (var path in includePaths.Where(p => !string.IsNullOrWhiteSpace(p)).Distinct())
             {
-                var correctedPath = CorrectNavigationPath<T>(path!);
-                if (!string.IsNullOrEmpty(correctedPath))
-                {
-                    query = query.Include(correctedPath);
-                }
+                query = query.Include(BuildIncludeExpression<T>(path));
             }
 
             return query;
         }
 
-        private static string? GetIncludePath(string propertyPath)
+        private static Expression<Func<T, object>> BuildIncludeExpression<T>(string propertyPath)
         {
-            var parts = propertyPath.Split('.');
-            if (parts.Length > 1)
+            var parameter = Expression.Parameter(typeof(T), "e");
+            Expression body = parameter;
+
+            foreach (var member in propertyPath.Split('.'))
             {
-                return string.Join(".", parts.Take(parts.Length - 1));
-            }
-            return null;
-        }
-
-        private static string? CorrectNavigationPath<T>(string path)
-        {
-            var type = typeof(T);
-            var correctedParts = new List<string>();
-
-            foreach (var part in path.Split('.'))
-            {
-                var propName = Capitalize(part);
-
-                var prop = type.GetProperty(propName);
-                if (prop == null)
-                {
-                    return null;
-                }
-
-                correctedParts.Add(propName);
-
-                type = prop.PropertyType;
-                if (type.IsGenericType && typeof(IEnumerable<>).IsAssignableFrom(type.GetGenericTypeDefinition()))
-                {
-                    type = type.GetGenericArguments().First();
-                }
+                body = Expression.PropertyOrField(body, member);
             }
 
-            return string.Join(".", correctedParts);
-        }
+            // Convert to object
+            if (body.Type.IsValueType)
+                body = Expression.Convert(body, typeof(object));
 
-        private static string Capitalize(string input)
-        {
-            if (string.IsNullOrEmpty(input))
-                return input;
-
-            return char.ToUpper(input[0]) + input.Substring(1);
+            return Expression.Lambda<Func<T, object>>(body, parameter);
         }
     }
 }

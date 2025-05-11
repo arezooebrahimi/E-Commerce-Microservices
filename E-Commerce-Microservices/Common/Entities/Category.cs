@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Common.Entities.Abstract;
 
 namespace Common.Entities
 {
-    public class Category : SeoBaseEntity
+    public class Category : SeoBaseEntity, IEntity
     {
         public Guid? ParentId { get; set; }
         public required string Name { get; set; }
@@ -18,7 +14,7 @@ namespace Common.Entities
         public string? ImageUrlOnHomePage { get; set; }
 
         // Navigation properties
-        public  Category? Parent { get; set; }
+        public Category? Parent { get; set; }
         public required ICollection<Category> SubCategories { get; set; }
         public required ICollection<ProductCategory> Products { get; set; }
         public required ICollection<CategoryMedia> Medias { get; set; }

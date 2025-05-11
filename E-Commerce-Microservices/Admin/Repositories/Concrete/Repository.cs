@@ -1,13 +1,14 @@
 ﻿using Admin.Dtos.Common;
 using Admin.Repositories.Abstract;
 using Common.Contexts;
+using Common.Entities.Abstract;
 using Common.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace Admin.Repositories.Concrete
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class, IEntity
     {
         private readonly CatalogDbContext _context;
         private readonly DbSet<T> _dbSet;
@@ -18,14 +19,61 @@ namespace Admin.Repositories.Concrete
             _dbSet = _context.Set<T>();
         }
 
+
+        public async Task<T?> GetByIdAsync(Guid id)
+        {
+            return await _dbSet.FindAsync(id);
+        }
+
+
+        public async Task<IEnumerable<T>> GetAllByIdsAsync(List<Guid> ids)
+        {
+            return await _dbSet.Where(t => ids.Contains(t.Id)).ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            return await _dbSet.ToListAsync();
+        }
+
+        public async Task<T> AddAsync(T entity)
+        {
+            await _dbSet.AddAsync(entity);
+            return entity;
+        }
+
+        public T Update(T entity)
+        {
+            _dbSet.Update(entity);
+            return entity;
+        }
+
+        public void Delete(T entity)
+        {
+            _dbSet.Remove(entity);
+        }
+
+        public void DeleteRange(IEnumerable<T> entity)
+        {
+            _dbSet.RemoveRange(entity);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+
+
         public async Task<(List<T> Items, int Total)> GetAllPaginateAsync(PagedRequest req)
         {
             IQueryable<T> query = _dbSet.AsQueryable();
-         
+
+            if(req.Includes!=null)
+               query = DynamicIncludeHelper.ApplyIncludes(query,req.Includes);
+
             if (req.Filters != null && req.Filters.Any())
                 query = DynamicFilterHelper.ApplyDynamicFilters(query, req.Filters!);
 
-            query = DynamicIncludeHelper.ApplyIncludes(query, new List<string> { "Parent" });
             var total = await query.CountAsync();
 
             if (!string.IsNullOrEmpty(req.Sort?.Column))
