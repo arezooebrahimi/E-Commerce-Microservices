@@ -1,8 +1,9 @@
+using Common.Entities.Abstract;
 using System.Collections.Generic;
 
 namespace Common.Entities
 {
-    public class Feature : BaseEntity
+    public class Feature : BaseEntity, IEntity
     {
         public required string Name { get; set; }
         public required string Slug { get; set; }

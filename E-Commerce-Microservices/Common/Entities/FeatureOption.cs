@@ -1,8 +1,9 @@
+using Common.Entities.Abstract;
 using System.Collections.Generic;
 
 namespace Common.Entities
 {
-    public class FeatureOption : BaseEntity
+    public class FeatureOption : BaseEntity, IEntity
     {
         public Guid FeatureId { get; set; }
         public required string Name { get; set; }

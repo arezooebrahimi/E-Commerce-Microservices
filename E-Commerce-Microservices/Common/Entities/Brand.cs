@@ -1,3 +1,4 @@
+using Common.Entities.Abstract;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -5,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Common.Entities
 {
-    public class Brand
+    public class Brand:IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

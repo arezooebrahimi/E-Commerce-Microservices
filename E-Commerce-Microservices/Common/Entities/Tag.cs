@@ -1,8 +1,8 @@
-using System.Collections.Generic;
+using Common.Entities.Abstract;
 
 namespace Common.Entities
 {
-    public class Tag : SeoBaseEntity
+    public class Tag : SeoBaseEntity , IEntity
     {
         public required string Name { get; set; }
         public string? Description { get; set; }
@@ -11,7 +11,7 @@ namespace Common.Entities
         public int Order { get; set; }
         
         // Navigation properties
-        public required ICollection<ProductTag> Products { get; set; }
-        public required ICollection<TagMedia> Medias { get; set; }
+        public ICollection<ProductTag>? Products { get; set; }
+        public ICollection<TagMedia>? Medias { get; set; }
     }
 } 

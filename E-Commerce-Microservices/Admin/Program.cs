@@ -1,5 +1,6 @@
 using Admin.Configurations.Installers;
 using Admin.Middlewares;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,12 @@ await builder.Services.InstallServices(
     environment,
     typeof(IServiceInstaller).Assembly
 );
+
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
+
 
 
 var app = builder.Build();

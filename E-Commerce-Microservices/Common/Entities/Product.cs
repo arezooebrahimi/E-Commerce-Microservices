@@ -1,9 +1,10 @@
-﻿using Common.Entities.Enums;
+﻿using Common.Entities.Abstract;
+using Common.Entities.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Common.Entities
 {
-    public class Product : SeoBaseEntity
+    public class Product : SeoBaseEntity, IEntity
     {
         public required string Name { get; set; }
         public required string Slug { get; set; }

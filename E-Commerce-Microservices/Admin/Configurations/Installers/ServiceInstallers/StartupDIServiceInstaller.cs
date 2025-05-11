@@ -16,6 +16,11 @@ public class StartupDIServiceInstaller : IServiceInstaller
     {
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+        services.AddScoped<IBrandService, BrandService>();
+        services.AddScoped<ITagService, TagService>();
+        services.AddScoped<IProductService, ProductService>();
+        services.AddScoped<IFeatureService, FeatureService>();
+        services.AddScoped<IFeatureOptionService, FeatureOptionService>();
         return Task.CompletedTask;
     }
 }
