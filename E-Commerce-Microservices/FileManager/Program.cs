@@ -1,5 +1,6 @@
 using FileManager.Configurations.Installers;
 using FileManager.Middlewares;
+using FileManager.Services.Grpc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,8 @@ await builder.Services.InstallServices(
     environment,
     typeof(IServiceInstaller).Assembly
 );
+builder.Services.AddGrpc();
+
 var app = builder.Build();
 app.InstallWebApp(
     app.Lifetime,
@@ -19,5 +22,7 @@ app.InstallWebApp(
     typeof(IWebApplicationInstaller).Assembly
 );
 app.UseCustomExceptionHandler();
+app.MapGrpcService<FileManagerGrpcServer>();
+app.MapGet("/", () => "FileManager gRPC is running!");
 app.MapControllers();
 app.Run();
