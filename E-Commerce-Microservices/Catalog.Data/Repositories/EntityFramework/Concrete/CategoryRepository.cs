@@ -1,12 +1,7 @@
-﻿using Catalog.Data.Contexts;
-using Catalog.Data.Repositories.EntityFramework.Abstract;
+﻿using Catalog.Data.Repositories.EntityFramework.Abstract;
+using Common.Contexts;
 using Common.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Catalog.Data.Repositories.EntityFramework.Concrete
 {

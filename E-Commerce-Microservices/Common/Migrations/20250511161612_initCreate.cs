@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Catalog.Data.Migrations
+namespace Common.Migrations
 {
     /// <inheritdoc />
     public partial class initCreate : Migration
@@ -18,7 +18,7 @@ namespace Catalog.Data.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true),
-                    ImageUrl = table.Column<string>(type: "text", nullable: true),
+                    ImageUrlId = table.Column<string>(type: "text", nullable: true),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
@@ -38,7 +38,7 @@ namespace Catalog.Data.Migrations
                     Order = table.Column<int>(type: "integer", nullable: false),
                     DisplayOnHomePage = table.Column<bool>(type: "boolean", nullable: false),
                     OrderOnHomePage = table.Column<int>(type: "integer", nullable: false),
-                    ImageUrlOnHomePage = table.Column<string>(type: "text", nullable: true),
+                    ImageIdOnHomePage = table.Column<string>(type: "text", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
@@ -365,7 +365,7 @@ namespace Catalog.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductFeatures",
+                name: "ProductAttributes",
                 columns: table => new
                 {
                     ProductId = table.Column<Guid>(type: "uuid", nullable: false),
@@ -377,21 +377,21 @@ namespace Catalog.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductFeatures", x => new { x.ProductId, x.FeatureId });
+                    table.PrimaryKey("PK_ProductAttributes", x => new { x.ProductId, x.FeatureId });
                     table.ForeignKey(
-                        name: "FK_ProductFeatures_FeatureOptions_DefaultFeatureOptionId",
+                        name: "FK_ProductAttributes_FeatureOptions_DefaultFeatureOptionId",
                         column: x => x.DefaultFeatureOptionId,
                         principalTable: "FeatureOptions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductFeatures_Features_FeatureId",
+                        name: "FK_ProductAttributes_Features_FeatureId",
                         column: x => x.FeatureId,
                         principalTable: "Features",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductFeatures_Products_ProductId",
+                        name: "FK_ProductAttributes_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
@@ -475,19 +475,19 @@ namespace Catalog.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductCategories_CategoryId",
-                table: "ProductCategories",
-                column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProductFeatures_DefaultFeatureOptionId",
-                table: "ProductFeatures",
+                name: "IX_ProductAttributes_DefaultFeatureOptionId",
+                table: "ProductAttributes",
                 column: "DefaultFeatureOptionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductFeatures_FeatureId",
-                table: "ProductFeatures",
+                name: "IX_ProductAttributes_FeatureId",
+                table: "ProductAttributes",
                 column: "FeatureId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductCategories_CategoryId",
+                table: "ProductCategories",
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductMedias_ProductId",
@@ -554,10 +554,10 @@ namespace Catalog.Data.Migrations
                 name: "CategoryMedias");
 
             migrationBuilder.DropTable(
-                name: "ProductCategories");
+                name: "ProductAttributes");
 
             migrationBuilder.DropTable(
-                name: "ProductFeatures");
+                name: "ProductCategories");
 
             migrationBuilder.DropTable(
                 name: "ProductMedias");

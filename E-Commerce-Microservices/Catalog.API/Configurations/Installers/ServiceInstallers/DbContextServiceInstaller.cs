@@ -1,4 +1,4 @@
-﻿using Catalog.Data.Contexts;
+﻿using Common.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 namespace Catalog.API.Configurations.Installers.ServiceInstallers;

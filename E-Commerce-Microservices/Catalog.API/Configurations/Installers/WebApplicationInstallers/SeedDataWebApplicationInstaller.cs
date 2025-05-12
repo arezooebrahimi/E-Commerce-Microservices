@@ -1,8 +1,9 @@
-using Catalog.Data.Contexts;
+
+using Common.Contexts;
 using Common.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
-using System.Text.Json.Serialization;
+
 
 namespace Catalog.API.Configurations.Installers.WebApplicationInstallers
 {

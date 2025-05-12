@@ -1,5 +1,5 @@
-﻿using Catalog.Data.Contexts;
-using Catalog.Data.Repositories.EntityFramework.Abstract;
+﻿using Catalog.Data.Repositories.EntityFramework.Abstract;
+using Common.Contexts;
 using Common.Dtos.Catalog.Product;
 using Common.Entities;
 using Common.Helpers;

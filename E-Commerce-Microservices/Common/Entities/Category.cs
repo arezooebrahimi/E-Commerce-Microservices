@@ -2,7 +2,7 @@
 
 namespace Common.Entities
 {
-    public class Category : SeoBaseEntity, IEntity
+    public class Category : SeoBaseEntity, IEntity,ISlugEntity
     {
         public Guid? ParentId { get; set; }
         public required string Name { get; set; }
@@ -11,7 +11,7 @@ namespace Common.Entities
         public int Order { get; set; }
         public bool DisplayOnHomePage { get; set; }
         public int OrderOnHomePage { get; set; }
-        public string? ImageUrlOnHomePage { get; set; }
+        public string? ImageIdOnHomePage { get; set; }
 
         // Navigation properties
         public Category? Parent { get; set; }

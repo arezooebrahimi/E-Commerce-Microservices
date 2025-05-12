@@ -5,6 +5,7 @@ using AutoMapper;
 using Common.Dtos.Catalog.Tag;
 using Common.Dtos.Common;
 using Common.Entities;
+using Common.Exceptions;
 
 namespace Admin.Services.Concrete
 {
@@ -43,6 +44,9 @@ namespace Admin.Services.Concrete
 
         public async Task<Tag> AddAsync(CreateTagRequest request)
         {
+            bool isDuplicate = await _tagRepository.IsSlugDuplicateAsync(request.Slug);
+            if (isDuplicate)
+                throw new AppException($"Slug '{request.Slug}' is already in use.");
             var entity = await _tagRepository.AddAsync(_mapper.Map<Tag>(request));
             await _tagRepository.SaveChangesAsync();
             return entity;

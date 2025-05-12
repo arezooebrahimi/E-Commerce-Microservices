@@ -2,22 +2,26 @@
 using Admin.Dtos.Common;
 using Admin.Repositories.Abstract;
 using Admin.Services.Abstract;
+using Admin.Services.Grpc;
 using AutoMapper;
 using Common.Dtos.Admin.Category;
 using Common.Dtos.Catalog.Category;
 using Common.Dtos.Common;
 using Common.Entities;
+using Common.Exceptions;
 
 namespace Admin.Services.Concrete
 {
     public class CategoryService: ICategoryService
     {
         private readonly IRepository<Category> _categoryRepository;
+        private readonly FileManagerGrpcClient _grpcClient;
         private readonly IMapper _mapper;
-        public CategoryService(IRepository<Category> categoryRepository, IMapper mapper)
+        public CategoryService(IRepository<Category> categoryRepository, IMapper mapper, FileManagerGrpcClient grpcClient)
         {
             _mapper = mapper;
             _categoryRepository = categoryRepository;
+            _grpcClient = grpcClient;
         }
 
 
@@ -47,11 +51,36 @@ namespace Admin.Services.Concrete
 
         public async Task<Category> AddAsync(CreateCategoryRequest request)
         {
-            var entity = await _categoryRepository.AddAsync(_mapper.Map<Category>(request));
+            bool isDuplicate = await _categoryRepository.IsSlugDuplicateAsync(request.Slug);
+            if (isDuplicate)
+                throw new AppException($"Slug '{request.Slug}' is already in use.");
+
+            var newEntity = _mapper.Map<Category>(request);
+            if (request.ImageOnHomePage != null)
+            {
+                var mediaIds = await _grpcClient.UploadFilesAsync([request.ImageOnHomePage]);
+                if (mediaIds.Count() != 0)
+                    newEntity.ImageIdOnHomePage = mediaIds[0];
+            }
+
+            if (request.Medias != null)
+            {
+                var mediaIds = await _grpcClient.UploadFilesAsync(request.Medias);
+                newEntity.Medias = new List<CategoryMedia>();
+                foreach (var item in mediaIds)
+                {
+                    newEntity.Medias.Add(new CategoryMedia
+                    {
+                        MediaId = item,
+                        IsPrimary = true
+                    });
+                }
+            }
+
+            var entity = await _categoryRepository.AddAsync(newEntity);
             await _categoryRepository.SaveChangesAsync();
             return entity;
         }
-
 
         public async Task<Category?> UpdateAsync(CreateCategoryRequest request)
         {

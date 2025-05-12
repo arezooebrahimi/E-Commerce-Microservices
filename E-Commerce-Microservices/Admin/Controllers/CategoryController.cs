@@ -40,7 +40,7 @@ namespace Admin.Controllers
 
 
         [HttpPost]
-        public async Task<ApiResult<Category>> Create(CreateCategoryRequest request)
+        public async Task<ApiResult<Category>> Create([FromForm] CreateCategoryRequest request)
         {
             var resp = await _service.AddAsync(request);
             return Ok(resp);

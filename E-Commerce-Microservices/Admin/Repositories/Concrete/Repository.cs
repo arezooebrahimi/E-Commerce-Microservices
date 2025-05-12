@@ -63,6 +63,16 @@ namespace Admin.Repositories.Concrete
             await _context.SaveChangesAsync();
         }
 
+        public async Task<bool> IsSlugDuplicateAsync(string slug)
+        {
+            if (!typeof(ISlugEntity).IsAssignableFrom(typeof(T)))
+                throw new InvalidOperationException($"Type {typeof(T).Name} does not have a Slug property.");
+
+            return await _dbSet
+                .Cast<ISlugEntity>()
+                .AnyAsync(e => e.Slug == slug);
+        }
+
 
         public async Task<(List<T> Items, int Total)> GetAllPaginateAsync(PagedRequest req)
         {

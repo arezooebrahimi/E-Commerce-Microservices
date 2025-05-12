@@ -4,6 +4,7 @@ using Admin.Repositories.Abstract;
 using Admin.Repositories.Concrete;
 using Admin.Services.Abstract;
 using Admin.Services.Concrete;
+using Admin.Services.Grpc;
 using Common.Attributes;
 
 
@@ -21,6 +22,8 @@ public class StartupDIServiceInstaller : IServiceInstaller
         services.AddScoped<IProductService, ProductService>();
         services.AddScoped<IFeatureService, FeatureService>();
         services.AddScoped<IFeatureOptionService, FeatureOptionService>();
+
+        services.AddSingleton<FileManagerGrpcClient>();
         return Task.CompletedTask;
     }
 }

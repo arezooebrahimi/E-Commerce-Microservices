@@ -13,5 +13,6 @@ namespace Admin.Repositories.Abstract
         void DeleteRange(IEnumerable<T> entity);
         Task SaveChangesAsync();
         Task<(List<T> Items, int Total)> GetAllPaginateAsync(PagedRequest req);
+        Task<bool> IsSlugDuplicateAsync(string slug);
     }
 }

@@ -5,6 +5,7 @@ using AutoMapper;
 using Common.Dtos.Catalog.Product;
 using Common.Dtos.Common;
 using Common.Entities;
+using Common.Exceptions;
 
 namespace Admin.Services.Concrete
 {
@@ -53,6 +54,10 @@ namespace Admin.Services.Concrete
 
         public async Task<Product> AddAsync(CreateProductRequest request)
         {
+            bool isDuplicate = await _productRepository.IsSlugDuplicateAsync(request.Slug);
+            if (isDuplicate)
+                throw new AppException($"Slug '{request.Slug}' is already in use.");
+
             var entity = await _productRepository.AddAsync(_mapper.Map<Product>(request));
             await _productRepository.SaveChangesAsync();
             return entity;

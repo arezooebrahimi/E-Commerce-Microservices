@@ -5,6 +5,7 @@ using AutoMapper;
 using Common.Dtos.Catalog.Feature;
 using Common.Dtos.Common;
 using Common.Entities;
+using Common.Exceptions;
 
 namespace Admin.Services.Concrete
 {
@@ -50,6 +51,10 @@ namespace Admin.Services.Concrete
 
         public async Task<Feature> AddAsync(CreateFeatureRequest request)
         {
+            bool isDuplicate = await _featureRepository.IsSlugDuplicateAsync(request.Slug);
+            if (isDuplicate)
+                throw new AppException($"Slug '{request.Slug}' is already in use.");
+
             var entity = await _featureRepository.AddAsync(_mapper.Map<Feature>(request));
             await _featureRepository.SaveChangesAsync();
             return entity;

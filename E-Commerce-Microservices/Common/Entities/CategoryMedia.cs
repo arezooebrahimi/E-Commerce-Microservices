@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace Common.Entities
 {
@@ -12,6 +13,8 @@ namespace Common.Entities
         public bool IsPrimary { get; set; }
 
         // Navigation properties
+
+        [JsonIgnore]
         public Category? Category { get; set; }
     }
 } 
