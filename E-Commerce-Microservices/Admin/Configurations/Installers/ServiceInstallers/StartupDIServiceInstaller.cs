@@ -10,7 +10,7 @@ using Common.Attributes;
 
 namespace FileManager.Configurations.Installers.ServiceInstallers;
 
-[InstallerOrder(Order = 1)]
+[InstallerOrder(Order = 3)]
 public class StartupDIServiceInstaller : IServiceInstaller
 {
     public Task Install(IServiceCollection services, IConfiguration configuration, IWebHostEnvironment hostEnvironment)

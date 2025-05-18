@@ -28,7 +28,7 @@ app.InstallWebApp(
     configuration,
     typeof(IWebApplicationInstaller).Assembly
 );
-
+app.UseCors("AllowSpecific");
 app.UseCustomExceptionHandler();
 app.MapControllers();
 
