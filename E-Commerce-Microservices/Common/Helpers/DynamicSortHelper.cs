@@ -5,10 +5,28 @@ namespace Common.Helpers
 {
     public static class DynamicSortHelper
     {
-         public static IQueryable<T> ApplySorting<T>(IQueryable<T> query, SortOptions sort)
+         public static IQueryable<T> ApplySorting<T>(IQueryable<T> query, SortOptions sort, List<string>? icludes)
         {
             if (string.IsNullOrEmpty(sort.Column))
                 throw new ArgumentException("Sort column is required.");
+
+            if (icludes != null && icludes.Any())
+            {
+                foreach (var include in icludes)
+                {
+                    List<string> parts = include.Split('.').ToList(); //Tags.Tag tagsTag
+                    parts[0] = char.ToLowerInvariant(parts[0][0]) + parts[0].Substring(1);
+                    var lowerCaseInclude = string.Join("", parts); //parentName //parent
+
+                    if (sort.Column.StartsWith(lowerCaseInclude))
+                    {
+                        var suffix = sort.Column.Substring(lowerCaseInclude.Length);
+                        parts.Add(suffix);
+                        sort.Column = string.Join(".", parts);
+                        break;
+                    }
+                }
+            }
 
             var parameter = Expression.Parameter(typeof(T), "p");
             Expression propertyAccess = parameter;

@@ -82,12 +82,12 @@ namespace Admin.Repositories.Concrete
                query = DynamicIncludeHelper.ApplyIncludes(query,req.Includes);
 
             if (req.Filters != null && req.Filters.Any())
-                query = DynamicFilterHelper.ApplyDynamicFilters(query, req.Filters!);
+                query = DynamicFilterHelper.ApplyDynamicFilters(query, req.Filters!,req.Includes);
 
             var total = await query.CountAsync();
 
             if (!string.IsNullOrEmpty(req.Sort?.Column))
-                query = DynamicSortHelper.ApplySorting(query, req.Sort);
+                query = DynamicSortHelper.ApplySorting(query, req.Sort,req.Includes);
 
             query = query
                 .Skip((req.Page - 1) * req.PerPage)

@@ -7,11 +7,31 @@ namespace Common.Helpers
 {
     public static class DynamicFilterHelper
     {
-        public static IQueryable<T> ApplyDynamicFilters<T>(IQueryable<T> query, Dictionary<string, FilterOptions> filters)
+        public static IQueryable<T> ApplyDynamicFilters<T>(IQueryable<T> query, Dictionary<string, FilterOptions> filters, List<string>? icludes)
         {
+            string filterKey = "";
+
             foreach (var filter in filters)
             {
-                query = ApplyFilter(query, filter.Key, filter.Value);
+                filterKey = filter.Key;
+                if (icludes != null && icludes.Any())
+                {
+                    foreach (var include in icludes)
+                    {
+                        List<string> parts = include.Split('.').ToList();
+                        parts[0] = char.ToLowerInvariant(parts[0][0]) + parts[0].Substring(1);
+                        var lowerCaseInclude = string.Join("", parts); //parentName //parent
+
+                        if (filter.Key.StartsWith(lowerCaseInclude))
+                        {
+                            var suffix = filter.Key.Substring(lowerCaseInclude.Length);
+                            parts.Add(suffix);
+                            filterKey = string.Join(".", parts);
+                            break;
+                        }
+                    }
+                }
+                query = ApplyFilter(query, filterKey, filter.Value);
             }
             return query;
         }
