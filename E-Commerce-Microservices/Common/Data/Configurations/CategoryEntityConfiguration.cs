@@ -23,7 +23,7 @@ namespace Common.Data.Configurations
             builder.HasOne(c => c.Parent)
                    .WithMany(c => c.SubCategories)
                    .HasForeignKey(c => c.ParentId)
-                   .OnDelete(DeleteBehavior.Restrict);
+                   .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasMany(c => c.Medias)
                    .WithOne(cm => cm.Category)
