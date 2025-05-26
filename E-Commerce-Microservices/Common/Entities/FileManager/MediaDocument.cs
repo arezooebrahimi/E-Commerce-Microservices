@@ -1,17 +1,22 @@
-﻿using MongoDB.Bson;
+﻿using Common.Attributes;
+using Common.Entities.Abstract;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Common.Entities.FileManager
 {
-    public class MediaDocument
+    public class MediaDocument:ICreatedAtEntity, IFilePathEntity
     {
         [BsonId]
-        public ObjectId Id { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
 
         [BsonElement("file_name")]
+        [MongoIndex(Unique = false, Name = "file_name")]
         public required string FileName { get; set; }
 
         [BsonElement("file_path")]
+        [MongoIndex(Unique = true, Name = "file_path")]
         public required string FilePath { get; set; }
 
         [BsonElement("mime_type")]

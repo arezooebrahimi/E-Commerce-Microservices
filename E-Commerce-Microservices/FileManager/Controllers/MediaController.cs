@@ -1,4 +1,6 @@
-﻿using Common.Entities.FileManager;
+﻿using Common.Dtos.Common;
+using Common.Dtos.FileManager;
+using Common.Entities.FileManager;
 using Common.WebFramework.Api;
 using FileManager.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
@@ -28,10 +30,10 @@ namespace FileManager.Controllers
         }
 
 
-        [HttpGet]
-        public async Task<ApiResult<List<MediaDocument>>> Get()
+        [HttpPost]
+        public async Task<ApiResult<PagedResponse<MediaDocument>>> Get(GetMediasRequest req)
         {
-            var medias = await _mediaService.GetAllAsync();
+            var medias = await _mediaService.GetAllAsync(req);
             return Ok(medias);
         }
 
@@ -47,11 +49,12 @@ namespace FileManager.Controllers
         }
 
 
-        [HttpDelete("{id}")]
-        public async Task<ApiResult> DeleteFile(string id)
+
+        [HttpDelete]
+        public async Task<ApiResult> DeleteFile(List<string> ids)
         {
-            var response = await _mediaService.DeleteAsync(id);
-            if(response)
+            var response = await _mediaService.DeleteAsync(ids);
+            if (response)
                 return Ok();
             return BadRequest();
         }

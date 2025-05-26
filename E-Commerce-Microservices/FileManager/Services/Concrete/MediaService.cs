@@ -1,4 +1,6 @@
-﻿using Common.Entities.FileManager;
+﻿using Common.Dtos.Common;
+using Common.Dtos.FileManager;
+using Common.Entities.FileManager;
 using FileManager.Models.Mongodb;
 using FileManager.Repositories.Abstract;
 using FileManager.Repositories.Concrete;
@@ -32,12 +34,35 @@ namespace FileManager.Services.Concrete
             var uploadedIds = new List<string>();
             foreach (var file in files)
             {
-                var fileName = _fileService.GenerateNewFileName(file);
+                string? formatFileKey = null;
+                bool isImage = file.ContentType.StartsWith("image/", StringComparison.OrdinalIgnoreCase);
+                var fileName = file.FileName;
                 var fileNameWithoutExt = Path.GetFileNameWithoutExtension(fileName);
+                var mimeType = file.ContentType;
+
+                string folderName = DateTime.Now.ToString("MM-yyyy");
+                string fileKey = $"{folderName}/{fileName}";
+
+                if (isImage && fileNameWithoutExt != "webp")
+                {
+                    fileKey = $"{folderName}/{fileNameWithoutExt}.webp";
+                    mimeType = "image/webp";
+                }
+
+                if (await _repository.ExistsByFilePathAsync(fileKey))
+                {
+                    fileName = _fileService.GenerateNewFileName(file);
+                    fileNameWithoutExt = Path.GetFileNameWithoutExtension(fileName);
+                    if (isImage && fileNameWithoutExt != "webp")
+                        fileKey = $"{folderName}/{fileNameWithoutExt}.webp";
+                    else
+                        fileKey = $"{folderName}/{fileName}";
+                }
+;
+                var filePath = Path.Combine(_uploadFolderPath, fileName);
+
                 List<MediaFormat>? filesFormated = null;
                 using var stream = file.OpenReadStream();
-                var filePath = Path.Combine(_uploadFolderPath, fileName);
-                bool isImage = file.ContentType.StartsWith("image/", StringComparison.OrdinalIgnoreCase);
 
                 try
                 {
@@ -49,8 +74,9 @@ namespace FileManager.Services.Concrete
                         for (int i = 0; i < filesFormated.Count; i++)
                         {
                             var item = filesFormated[i];
-                            var uploadedPath = await _arvanFileService.UploadFileAsync(item.FileName, item.FilePath);
-                            item.FilePath = uploadedPath;
+                            formatFileKey = $"{folderName}/{item.FileName}";
+                            await _arvanFileService.UploadFileAsync(formatFileKey, item.FilePath);
+                            item.FilePath = formatFileKey;
 
                             _fileService.DeleteFile(item.FileName);
                         }
@@ -58,13 +84,13 @@ namespace FileManager.Services.Concrete
                     else
                         await _fileService.UploadFileAsync(file, fileName, filePath);
 
-                    filePath = await _arvanFileService.UploadFileAsync(fileName, filePath);
+                    await _arvanFileService.UploadFileAsync(fileKey, filePath);
 
                     var mediaDoc = new MediaDocument()
                     {
                         FileName = fileName,
-                        FilePath = filePath,
-                        MimeType = file.ContentType,
+                        FilePath = fileKey,
+                        MimeType = mimeType,
                         Size = stream.Length,
                         Formats = filesFormated,
                         CreatedAt = DateTime.Now,
@@ -89,9 +115,9 @@ namespace FileManager.Services.Concrete
             return uploadedIds;
         }
 
-        public Task<List<MediaDocument>> GetAllAsync()
+        public Task<PagedResponse<MediaDocument>> GetAllAsync(GetMediasRequest req)
         {
-            return _repository.GetAllAsync();
+            return _repository.GetAllAsync(req);
         }
 
         public Task<MediaDocument?> GetByIdAsync(string id)
@@ -109,27 +135,27 @@ namespace FileManager.Services.Concrete
             return _repository.UpdateAsync(id, document);
         }
 
-        public async Task<bool> DeleteAsync(string id)
+        public async Task<bool> DeleteAsync(List<string> ids)
         {
             try
             {
-                var document = await _repository.GetByIdAsync(id);
-                if (document != null)
+                foreach (var id in ids)
                 {
-                    await _arvanFileService.DeleteFileAsync(document.FilePath);
-                    if (document.Formats != null)
+                    var document = await _repository.GetByIdAsync(id);
+                    if (document != null)
                     {
-                        foreach (var format in document.Formats)
+                        await _arvanFileService.DeleteFileAsync(document.FilePath);
+                        if (document.Formats != null)
                         {
-                            await _arvanFileService.DeleteFileAsync(format.FilePath);
+                            foreach (var format in document.Formats)
+                            {
+                                await _arvanFileService.DeleteFileAsync(format.FilePath);
+                            }
                         }
                     }
-                    await _repository.DeleteAsync(id);
                 }
-                else
-                {
-                    _logger.LogWarning($"File with id = {id} does not exist");
-                }
+
+                await _repository.DeleteAsync(ids);
                 return true;
             }
             catch (Exception ex)

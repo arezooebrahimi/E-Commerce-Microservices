@@ -38,17 +38,15 @@ namespace FileManager.Services.Concrete
             _s3Client = new AmazonS3Client(awsCredentials, config);
         }
 
-        public async Task<string> UploadFileAsync(string fileName,string filePath)
+        public async Task UploadFileAsync(string fileKey, string filePath)
         {
             if (!File.Exists(filePath))
                 throw new FileNotFoundException("فایل پیدا نشد.", filePath);
 
-            string folderName = DateTime.Now.ToString("MM-yyyy");
-            string key = $"{folderName}/{fileName}";
             var request = new PutObjectRequest
             {
                 BucketName = _bucketName,
-                Key = key ,
+                Key = fileKey,
                 FilePath = filePath,
                 CannedACL = S3CannedACL.PublicRead,
                 AutoCloseStream = true
@@ -56,11 +54,7 @@ namespace FileManager.Services.Concrete
 
             var response = await _s3Client.PutObjectAsync(request);
 
-            if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
-            {
-                return key;
-            }
-            else
+            if (response.HttpStatusCode != System.Net.HttpStatusCode.OK)
             {
                 throw new Exception("File upload failed.");
             }
