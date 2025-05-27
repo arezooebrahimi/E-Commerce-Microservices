@@ -1,5 +1,4 @@
-﻿using Admin.Dtos.Common;
-using Admin.Services.Abstract;
+﻿using Admin.Services.Abstract;
 using Common.Dtos.Admin.Category;
 using Common.Dtos.Catalog.Category;
 using Common.Dtos.Common;
@@ -40,7 +39,7 @@ namespace Admin.Controllers
 
 
         [HttpPost]
-        public async Task<ApiResult<Category>> Create([FromForm] CreateCategoryRequest request)
+        public async Task<ApiResult<Category>> Create([FromBody] CreateCategoryRequest request)
         {
             var resp = await _service.AddAsync(request);
             return Ok(resp);

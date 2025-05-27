@@ -1,5 +1,6 @@
 ﻿
 
+using Common.Entities;
 using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
@@ -25,8 +26,6 @@ namespace Common.Dtos.Catalog.Category
         public int Order { get; set; }
         public bool DisplayOnHomePage { get; set; }
         public int OrderOnHomePage { get; set; }
-
-        public IFormFile? ImageOnHomePage { get; set; }
-        public List<IFormFile>? Medias { get; set; }
+        public ICollection<CategoryMedia>? Medias { get; set; }
     }
 }

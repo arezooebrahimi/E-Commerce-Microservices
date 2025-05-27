@@ -1,5 +1,4 @@
-﻿using Admin.Dtos.Common;
-using Admin.Repositories.Abstract;
+﻿using Admin.Repositories.Abstract;
 using Admin.Services.Abstract;
 using AutoMapper;
 using Common.Dtos.Catalog.Brand;

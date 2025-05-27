@@ -1,7 +1,6 @@
-﻿using Common.Dtos.Common;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
-namespace Admin.Dtos.Common
+namespace Common.Dtos.Common
 {
     public class PagedRequest
     {

@@ -11,7 +11,6 @@ namespace Common.Entities
         public int Order { get; set; }
         public bool DisplayOnHomePage { get; set; }
         public int OrderOnHomePage { get; set; }
-        public string? ImageIdOnHomePage { get; set; }
 
         // Navigation properties
         public Category? Parent { get; set; }

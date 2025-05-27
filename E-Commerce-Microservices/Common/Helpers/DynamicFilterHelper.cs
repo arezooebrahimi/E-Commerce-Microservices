@@ -110,7 +110,24 @@ namespace Common.Helpers
 
         private static Expression BuildComparisonExpression(Expression propertyExpr, FilterMode mode)
         {
+            if (propertyExpr == null)
+                throw new ArgumentNullException(nameof(propertyExpr));
+
+            if (mode == null)
+                throw new ArgumentNullException(nameof(mode));
+
             var targetType = propertyExpr.Type;
+
+            if (mode.Value == null)
+            {
+                return mode.Mode switch
+                {
+                    "equals" => Expression.Equal(propertyExpr, Expression.Constant(null)),
+                    "notEquals" => Expression.NotEqual(propertyExpr, Expression.Constant(null)),
+                    _ => throw new NotSupportedException($"Null value is not supported for mode '{mode.Mode}'")
+                };
+            }
+
             var constant = GetTypedConstant(targetType, mode.Value.ToString()!);
 
             var comparisonMethods = new Dictionary<string, Func<Expression, Expression, Expression>>()
@@ -132,7 +149,6 @@ namespace Common.Helpers
 
             return comparisonMethods[mode.Mode](propertyExpr, constant);
         }
-
 
         private static ConstantExpression GetTypedConstant(Type targetType, string value)
         {

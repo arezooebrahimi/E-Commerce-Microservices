@@ -1,5 +1,4 @@
-﻿using Admin.Dtos.Common;
-using Common.Dtos.Catalog.Product;
+﻿using Common.Dtos.Catalog.Product;
 using Common.Dtos.Common;
 using Common.Entities;
 

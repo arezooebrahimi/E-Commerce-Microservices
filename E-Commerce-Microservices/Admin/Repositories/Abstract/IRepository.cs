@@ -1,4 +1,4 @@
-﻿using Admin.Dtos.Common;
+﻿using Common.Dtos.Common;
 
 namespace Admin.Repositories.Abstract
 {

@@ -29,8 +29,30 @@ namespace FileManager.Services.Grpc
                 formFiles.Add(formFile);
             }
 
-            var fileIds = await _mediaService.UploadFilesAsync(formFiles);
-            return new UploadFilesReply { FileIds = { fileIds } };
+            var files = await _mediaService.UploadFilesAsync(formFiles);
+            var reply = new UploadFilesReply();
+            reply.MediaDocuments.AddRange(files.Select(file => new MediaDocument
+            {
+                Id = file.Id ?? "",
+                FileName = file.FileName,
+                FilePath = file.FilePath,
+                MimeType = file.MimeType,
+                Size = file.Size,
+                CreatedAt = file.CreatedAt.ToString(),
+                Formats = {
+                    file.Formats?.Select(format => new MediaFormat
+                    {
+                        FileName = format.FileName,
+                        FilePath = format.FilePath,
+                        Format = format.Format,
+                        Ext = format.Ext,
+                        Width = format.Width,
+                        Height = format.Height
+                    }) ?? Enumerable.Empty<MediaFormat>()
+                }
+            }));
+
+            return reply;
         }
     }
 }

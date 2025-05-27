@@ -13,7 +13,7 @@ namespace Admin.Services.Grpc
             _client = new FileService.FileServiceClient(channel);
         }
 
-        public async Task<List<string>> UploadFilesAsync(List<IFormFile> files)
+        public async Task<List<MediaDocument>> UploadFilesAsync(List<IFormFile> files)
         {
             var request = new UploadFilesRequest();
 
@@ -32,7 +32,7 @@ namespace Admin.Services.Grpc
 
             var response = await _client.UploadFilesAsync(request);
 
-            return response.FileIds.ToList();
+            return response.MediaDocuments.ToList();
         }
     }
 }

@@ -6,7 +6,7 @@ namespace FileManager.Services.Abstract
 {
     public interface IMediaService
     {
-        Task<List<string>> UploadFilesAsync(List<IFormFile> files);
+        Task<List<MediaDocument>> UploadFilesAsync(List<IFormFile> files);
         Task<PagedResponse<MediaDocument>> GetAllAsync(GetMediasRequest req);
         Task<MediaDocument?> GetByIdAsync(string id);
         Task CreateAsync(MediaDocument document);

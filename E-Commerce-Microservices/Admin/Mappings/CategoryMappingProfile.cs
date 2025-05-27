@@ -21,9 +21,7 @@ public class CategoryMappingProfile : Profile
         CreateMap<Feature, GetFeaturesPaginateDto>();
         CreateMap<FeatureOption, GetFeatureOptionsPaginateDto>();
 
-        CreateMap<CreateCategoryRequest, Category>().
-            ForMember(dest => dest.Medias, opt => opt.Ignore()).
-            ForMember(dest => dest.ImageIdOnHomePage, opt => opt.Ignore());
+        CreateMap<CreateCategoryRequest, Category>();
 
 
         CreateMap<CreateTagRequest, Tag>().

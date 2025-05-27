@@ -1,6 +1,4 @@
-﻿
-using Admin.Dtos.Common;
-using Admin.Repositories.Abstract;
+﻿using Admin.Repositories.Abstract;
 using Admin.Services.Abstract;
 using Admin.Services.Grpc;
 using AutoMapper;
@@ -23,6 +21,40 @@ namespace Admin.Services.Concrete
             _categoryRepository = categoryRepository;
             _grpcClient = grpcClient;
         }
+
+        public async Task<List<SelectListResponse>> GetParentsForSelect()
+        {
+            var request = new PagedRequest();
+            var response = new List<SelectListResponse>();
+            request.PerPage = 1000;
+            request.Filters = new Dictionary<string, FilterOptions>
+            {
+                {
+                    "ParentId",
+                    new FilterOptions
+                    {
+                        FilterModes = new List<FilterMode>
+                        {
+                            new FilterMode
+                            {
+                                Mode = "equals",
+                                Value = null
+                            }
+                        },
+                        Operator = "and"
+                    }
+                }
+            };
+
+            var (categories, total) = await _categoryRepository.GetAllPaginateAsync(request);
+            foreach (var category in categories)
+            {
+                response.Add(new SelectListResponse { Label = category.Name, Value = category.Id });
+            }
+
+            return response;
+        }
+
 
 
         public async Task<PagedResponse<GetCategoriesPaginateDto>> GetAllPaginateAsync(PagedRequest request)
@@ -56,26 +88,11 @@ namespace Admin.Services.Concrete
                 throw new AppException($"Slug '{request.Slug}' is already in use.");
 
             var newEntity = _mapper.Map<Category>(request);
-            if (request.ImageOnHomePage != null)
-            {
-                var mediaIds = await _grpcClient.UploadFilesAsync([request.ImageOnHomePage]);
-                if (mediaIds.Count() != 0)
-                    newEntity.ImageIdOnHomePage = mediaIds[0];
-            }
 
-            if (request.Medias != null)
-            {
-                var mediaIds = await _grpcClient.UploadFilesAsync(request.Medias);
-                newEntity.Medias = new List<CategoryMedia>();
-                foreach (var item in mediaIds)
-                {
-                    newEntity.Medias.Add(new CategoryMedia
-                    {
-                        MediaId = item,
-                        IsPrimary = true
-                    });
-                }
-            }
+            if (newEntity.SeoTitle != null)
+                newEntity.SeoTitleLength = newEntity.SeoTitle.Length;
+            if (newEntity.MetaDescription != null)
+                newEntity.MetaDescriptionLength = newEntity.MetaDescription.Length;
 
             var entity = await _categoryRepository.AddAsync(newEntity);
             await _categoryRepository.SaveChangesAsync();

@@ -17,5 +17,24 @@ message UploadFilesRequest {
 }
 
 message UploadFilesReply {
-  repeated string fileIds = 1; // لیست شناسه‌های ذخیره شده
+  repeated MediaDocument mediaDocuments = 1;
+}
+
+message MediaDocument {
+  string id = 1;
+  string fileName = 2;
+  string filePath = 3;
+  string mimeType = 4;
+  int64 size = 5;
+  string createdAt = 6; // ISO 8601 string یا به‌صورت timestamp هم میشه
+  repeated MediaFormat formats = 7;
+}
+
+message MediaFormat {
+  string fileName = 1;
+  string filePath = 2;
+  string format = 3;
+  string ext = 4;
+  int32 width = 5;
+  int32 height = 6;
 }

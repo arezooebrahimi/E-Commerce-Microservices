@@ -29,9 +29,9 @@ namespace FileManager.Services.Concrete
             _logger = logger;
         }
 
-        public async Task<List<string>> UploadFilesAsync(List<IFormFile> files)
+        public async Task<List<MediaDocument>> UploadFilesAsync(List<IFormFile> files)
         {
-            var uploadedIds = new List<string>();
+            var uploaded = new List<MediaDocument>();
             foreach (var file in files)
             {
                 string? formatFileKey = null;
@@ -98,7 +98,7 @@ namespace FileManager.Services.Concrete
 
                     await CreateAsync(mediaDoc);
 
-                    uploadedIds.Add(mediaDoc.Id.ToString());
+                    uploaded.Add(mediaDoc);
                 }
 
                 catch (Exception ex)
@@ -112,7 +112,7 @@ namespace FileManager.Services.Concrete
                 }
             }
 
-            return uploadedIds;
+            return uploaded;
         }
 
         public Task<PagedResponse<MediaDocument>> GetAllAsync(GetMediasRequest req)
