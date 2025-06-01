@@ -22,7 +22,7 @@ public class StartupDIServiceInstaller : IServiceInstaller
         services.AddScoped<IProductService, ProductService>();
         services.AddScoped<IFeatureService, FeatureService>();
         services.AddScoped<IFeatureOptionService, FeatureOptionService>();
-
+        services.AddScoped<ICategoryMediaRepository, CategoryMediaRepository>();
         services.AddSingleton<FileManagerGrpcClient>();
         return Task.CompletedTask;
     }

@@ -20,9 +20,14 @@ namespace Admin.Repositories.Concrete
         }
 
 
-        public async Task<T?> GetByIdAsync(Guid id)
+        public async Task<T?> GetByIdAsync(Guid id, List<string>? includes = null)
         {
-            return await _dbSet.FindAsync(id);
+            IQueryable<T> query = _dbSet.AsQueryable();
+
+            if (includes != null)
+                query = DynamicIncludeHelper.ApplyIncludes(query, includes);
+
+            return await query.Where(t => t.Id == id).FirstOrDefaultAsync();
         }
 
 

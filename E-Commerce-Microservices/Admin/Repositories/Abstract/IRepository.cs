@@ -4,7 +4,7 @@ namespace Admin.Repositories.Abstract
 {
     public interface IRepository<T> where T : class
     {
-        Task<T?> GetByIdAsync(Guid id);
+        Task<T?> GetByIdAsync(Guid id, List<string>? includes = null);
         Task<IEnumerable<T>> GetAllAsync();
         Task<IEnumerable<T>> GetAllByIdsAsync(List<Guid> ids);
         Task<T> AddAsync(T entity);

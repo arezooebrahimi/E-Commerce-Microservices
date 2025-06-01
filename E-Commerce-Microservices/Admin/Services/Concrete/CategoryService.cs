@@ -1,4 +1,5 @@
 ﻿using Admin.Repositories.Abstract;
+using Admin.Repositories.Concrete;
 using Admin.Services.Abstract;
 using Admin.Services.Grpc;
 using AutoMapper;
@@ -15,11 +16,13 @@ namespace Admin.Services.Concrete
         private readonly IRepository<Category> _categoryRepository;
         private readonly FileManagerGrpcClient _grpcClient;
         private readonly IMapper _mapper;
-        public CategoryService(IRepository<Category> categoryRepository, IMapper mapper, FileManagerGrpcClient grpcClient)
+        private readonly ICategoryMediaRepository _categoryMediaRepository;
+        public CategoryService(IRepository<Category> categoryRepository, IMapper mapper, FileManagerGrpcClient grpcClient, ICategoryMediaRepository categoryMediaRepository)
         {
             _mapper = mapper;
             _categoryRepository = categoryRepository;
             _grpcClient = grpcClient;
+            _categoryMediaRepository = categoryMediaRepository;
         }
 
         public async Task<List<SelectListResponse>> GetParentsForSelect()
@@ -72,7 +75,8 @@ namespace Admin.Services.Concrete
 
         public async Task<Category?> GetByIdAsync(Guid id)
         {
-            return await _categoryRepository.GetByIdAsync(id);
+            var includes = new List<string>() { "Medias" };
+            return await _categoryRepository.GetByIdAsync(id, includes);
         }
 
 
@@ -104,10 +108,19 @@ namespace Admin.Services.Concrete
             Category? entity = null;
             if (request.Id != null)
             {
+                var medias = await _categoryMediaRepository.GetByCategoryIdAsync(request.Id);
+                if (medias.Count() != 0)
+                    _categoryMediaRepository.DeleteRange(medias);
+
                 entity = await _categoryRepository.GetByIdAsync((Guid)request.Id);
                 if (entity != null)
                 {
                     _mapper.Map(request, entity);
+                    if (request.SeoTitle != null)
+                        entity.SeoTitleLength = request.SeoTitle.Length;
+                    if (request.MetaDescription != null)
+                        entity.MetaDescriptionLength = request.MetaDescription.Length;
+
                     await _categoryRepository.SaveChangesAsync();
                 }
             }
