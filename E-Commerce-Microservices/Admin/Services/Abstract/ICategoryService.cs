@@ -13,5 +13,6 @@ namespace Admin.Services.Abstract
         Task DeleteAsync(IEnumerable<Category> category);
         Task<Category?> GetByIdAsync(Guid id);
         Task<IEnumerable<Category>> GetAllByIdsAsync(List<Guid> ids);
+        Task<List<SelectListResponse>> GetParentsForSelect();
     }
 }

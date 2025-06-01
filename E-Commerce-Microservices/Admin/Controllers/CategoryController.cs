@@ -67,5 +67,12 @@ namespace Admin.Controllers
             await _service.DeleteAsync(entities);
             return Ok();
         }
+
+        [HttpGet("[action]")]
+        public async Task<ApiResult<List<SelectListResponse>>> GetParentsForSelect()
+        {
+            var resp = await _service.GetParentsForSelect();
+            return Ok(resp);
+        }
     }
 }
