@@ -1,6 +1,6 @@
 ﻿using Catalog.Data.Repositories.EntityFramework.Abstract;
 using Common.Contexts;
-using Common.Dtos.Catalog.Product;
+using Common.Dtos.Admin.Product;
 using Common.Entities;
 using Common.Helpers;
 using Microsoft.EntityFrameworkCore;

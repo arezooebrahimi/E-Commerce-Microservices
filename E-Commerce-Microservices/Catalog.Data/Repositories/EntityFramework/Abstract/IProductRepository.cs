@@ -1,4 +1,4 @@
-﻿using Common.Dtos.Catalog.Product;
+﻿using Common.Dtos.Admin.Product;
 using Common.Entities;
 
 namespace Catalog.Data.Repositories.EntityFramework.Abstract

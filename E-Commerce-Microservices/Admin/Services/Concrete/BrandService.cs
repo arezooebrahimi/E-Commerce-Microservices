@@ -1,7 +1,7 @@
 ﻿using Admin.Repositories.Abstract;
 using Admin.Services.Abstract;
 using AutoMapper;
-using Common.Dtos.Catalog.Brand;
+using Common.Dtos.Admin.Brand;
 using Common.Dtos.Common;
 using Common.Entities;
 
@@ -25,12 +25,7 @@ namespace Admin.Services.Concrete
             var response = new PagedResponse<GetBrandsPaginateDto>
             {
                 Total = total,
-                Items = brands.Select(brand => new GetBrandsPaginateDto
-                {
-                    Name = brand.Name,
-                    Description = brand.Description,
-                    IsActive = brand.IsActive
-                }).ToList()
+                Items = _mapper.Map<List<GetBrandsPaginateDto>>(brands)
             };
 
             return response;

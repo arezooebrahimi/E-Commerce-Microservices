@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Dtos.Catalog.Feature
+namespace Common.Dtos.Admin.Feature
 {
     public class CreateFeatureRequest
     {

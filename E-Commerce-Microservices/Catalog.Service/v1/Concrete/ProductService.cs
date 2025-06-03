@@ -1,6 +1,6 @@
 ﻿using Catalog.Data.Repositories.EntityFramework.Abstract;
 using Catalog.Service.v1.Abstract;
-using Common.Dtos.Catalog.Product;
+using Common.Dtos.Admin.Product;
 using Common.Dtos.Common;
 using Common.Entities;
 using Common.Utilities;

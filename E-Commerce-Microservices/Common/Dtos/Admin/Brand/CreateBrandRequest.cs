@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Dtos.Catalog.Brand
+namespace Common.Dtos.Admin.Brand
 {
     public class CreateBrandRequest
     {

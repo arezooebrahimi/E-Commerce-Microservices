@@ -1,7 +1,7 @@
 ﻿using Admin.Repositories.Abstract;
 using Admin.Services.Abstract;
 using AutoMapper;
-using Common.Dtos.Catalog.Product;
+using Common.Dtos.Admin.Product;
 using Common.Dtos.Common;
 using Common.Entities;
 using Common.Exceptions;
@@ -24,18 +24,11 @@ namespace Admin.Services.Concrete
             request.Includes = new List<string>() { "Brand" };
             var (products, total) = await _productRepository.GetAllPaginateAsync(request);
 
+            var productDto = _mapper.Map<List<GetProductsPaginateDto>>(products);
             var response = new PagedResponse<GetProductsPaginateDto>
             {
                 Total = total,
-                Items = products.Select(product => new GetProductsPaginateDto
-                {
-                    Name = product.Name,
-                    Slug = product.Slug,
-                    BrandName = product.Brand != null ? product.Brand.Name : null,
-                    Price = product.Price,
-                    Status = product.Status,
-                    StockStatus = product.StockStatus
-                }).ToList()
+                Items = productDto
             };
 
             return response;

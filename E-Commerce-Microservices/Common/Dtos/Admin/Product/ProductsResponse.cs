@@ -1,6 +1,6 @@
 ﻿using Common.Entities;
 
-namespace Common.Dtos.Catalog.Product
+namespace Common.Dtos.Admin.Product
 {
     public class ProductsResponse
     {

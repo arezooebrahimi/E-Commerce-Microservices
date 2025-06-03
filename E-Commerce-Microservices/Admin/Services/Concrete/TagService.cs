@@ -1,7 +1,7 @@
 ﻿using Admin.Repositories.Abstract;
 using Admin.Services.Abstract;
 using AutoMapper;
-using Common.Dtos.Catalog.Tag;
+using Common.Dtos.Admin.Tag;
 using Common.Dtos.Common;
 using Common.Entities;
 using Common.Exceptions;

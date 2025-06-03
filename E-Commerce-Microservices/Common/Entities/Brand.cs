@@ -12,7 +12,7 @@ namespace Common.Entities
 
         public required string Name { get; set; }
         public string? Description { get; set; }
-        public string? ImageUrlId { get; set; }
+        public string? MediaId { get; set; }
         public bool IsActive { get; set; }
 
         // Navigation properties

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Dtos.Catalog.Feature
+namespace Common.Dtos.Admin.Tag
 {
-    public class GetFeaturesPaginateDto
+    public class GetTagsPaginateDto
     {
+        public Guid Id { get; set; }
         public required string Name { get; set; }
         public required string Slug { get; set; }
-        public List<string>? OptionsName { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Dtos.Catalog.FeatureOption
+namespace Common.Dtos.Admin.FeatureOption
 {
     public class CreateFeatureOptionRequest
     {

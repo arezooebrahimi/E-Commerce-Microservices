@@ -1,7 +1,7 @@
 ﻿using Common.Entities.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace Common.Dtos.Catalog.Product
+namespace Common.Dtos.Admin.Product
 {
     public class CreateProductRequest
     {

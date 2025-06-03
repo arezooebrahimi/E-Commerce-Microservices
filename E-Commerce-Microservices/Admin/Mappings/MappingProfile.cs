@@ -1,18 +1,18 @@
 using AutoMapper;
+using Common.Dtos.Admin.Brand;
 using Common.Dtos.Admin.Category;
-using Common.Dtos.Catalog.Brand;
+using Common.Dtos.Admin.Feature;
+using Common.Dtos.Admin.FeatureOption;
+using Common.Dtos.Admin.Product;
+using Common.Dtos.Admin.Tag;
 using Common.Dtos.Catalog.Category;
-using Common.Dtos.Catalog.Feature;
-using Common.Dtos.Catalog.FeatureOption;
-using Common.Dtos.Catalog.Product;
-using Common.Dtos.Catalog.Tag;
 using Common.Entities;
 
 namespace Admin.Mappings;
 
-public class CategoryMappingProfile : Profile
+public class MappingProfile : Profile
 {
-    public CategoryMappingProfile()
+    public MappingProfile()
     {
         CreateMap<Category, GetCategoriesPaginateDto>();
         CreateMap<Tag, GetTagsPaginateDto>();

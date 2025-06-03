@@ -1,5 +1,5 @@
 ﻿using Admin.Services.Abstract;
-using Common.Dtos.Admin.Product;
+using Common.Dtos.Admin.ProductReview;
 using Common.Dtos.Common;
 using Common.Entities;
 using Common.WebFramework.Api;
@@ -9,23 +9,23 @@ namespace Admin.Controllers
 {
     [Route("admin/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductReviewController : ControllerBase
     {
-        private readonly IProductService _service;
+        private readonly IProductReviewService _service;
 
-        public ProductController(IProductService service)
+        public ProductReviewController(IProductReviewService service)
         {
             _service = service;
         }
 
         [HttpPost("[action]")]
-        public async Task<ApiResult<PagedResponse<GetProductsPaginateDto>>> GetPaginate(PagedRequest request)
+        public async Task<ApiResult<PagedResponse<GetProductReviewsPaginateDto>>> GetPaginate(PagedRequest request)
         {
             return Ok(await _service.GetAllPaginateAsync(request));
         }
 
         [HttpGet("{id}")]
-        public async Task<ApiResult<Product>> GetById(Guid id)
+        public async Task<ApiResult<ProductReview>> GetById(Guid id)
         {
             var resp = await _service.GetByIdAsync(id);
             if (resp != null)
@@ -35,14 +35,14 @@ namespace Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<ApiResult<Product>> Create(CreateProductRequest request)
+        public async Task<ApiResult<ProductReview>> Create(CreateProductReviewsRequest request)
         {
             var resp = await _service.AddAsync(request);
             return Ok(resp);
         }
 
         [HttpPut]
-        public async Task<ApiResult<Product>> Update([FromBody] CreateProductRequest request)
+        public async Task<ApiResult<ProductReview>> Update([FromBody] CreateProductReviewsRequest request)
         {
             var resp = await _service.UpdateAsync(request);
             if (resp != null)

@@ -1,4 +1,4 @@
-﻿using Common.Dtos.Catalog.FeatureOption;
+﻿using Common.Dtos.Admin.FeatureOption;
 using Common.Dtos.Common;
 using Common.Entities;
 

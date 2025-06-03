@@ -7,7 +7,7 @@ namespace Common.Entities
     {
         public required string Name { get; set; }
         public required string Slug { get; set; }
-        public string? Type { get; set; }
+        public bool IsFilter { get; set; }
 
         // Navigation properties
         public required ICollection<ProductFeature> Products { get; set; }

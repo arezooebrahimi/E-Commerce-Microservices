@@ -1,4 +1,4 @@
-﻿using Common.Dtos.Catalog.Tag;
+﻿using Common.Dtos.Admin.Tag;
 using Common.Dtos.Common;
 using Common.Entities;
 

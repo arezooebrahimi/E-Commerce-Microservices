@@ -1,7 +1,7 @@
 ﻿using Common.Entities.Enums;
 
 
-namespace Common.Dtos.Catalog.Product
+namespace Common.Dtos.Admin.Product
 {
     public class ProductDetailsResponse
     {

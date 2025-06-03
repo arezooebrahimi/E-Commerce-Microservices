@@ -1,7 +1,7 @@
 ﻿using Admin.Repositories.Abstract;
 using Admin.Services.Abstract;
 using AutoMapper;
-using Common.Dtos.Catalog.Feature;
+using Common.Dtos.Admin.Feature;
 using Common.Dtos.Common;
 using Common.Entities;
 using Common.Exceptions;
@@ -27,12 +27,7 @@ namespace Admin.Services.Concrete
             var response = new PagedResponse<GetFeaturesPaginateDto>
             {
                 Total = total,
-                Items = features.Select(feature => new GetFeaturesPaginateDto
-                {
-                    Name = feature.Name,
-                    Slug = feature.Slug,
-                    OptionsName = feature.Options?.Select(o => o.Name).ToList()
-                }).ToList()
+                Items = _mapper.Map<List<GetFeaturesPaginateDto>>(features)
             };
 
             return response;

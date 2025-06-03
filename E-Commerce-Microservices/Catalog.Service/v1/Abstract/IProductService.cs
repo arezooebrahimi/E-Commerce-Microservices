@@ -1,4 +1,4 @@
-﻿using Common.Dtos.Catalog.Product;
+﻿using Common.Dtos.Admin.Product;
 using Common.Dtos.Common;
 
 namespace Catalog.Service.v1.Abstract

@@ -14,7 +14,6 @@ namespace Common.Data.Configurations
             builder.Property(pa => pa.Name).IsRequired().HasMaxLength(300);
             builder.Property(pa => pa.Slug).IsRequired().HasMaxLength(300);
             builder.HasIndex(p => p.Slug).IsUnique();
-            builder.Property(pa => pa.Type).IsRequired().HasMaxLength(50);
 
             builder.Property(pa => pa.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
 

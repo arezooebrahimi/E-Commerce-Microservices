@@ -9,6 +9,7 @@ namespace Common.Data.Configurations
         public void Configure(EntityTypeBuilder<Tag> builder)
         {
             builder.ToTable("Tags");
+            builder.Property(c => c.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             builder.Property(c => c.Slug).IsRequired().HasMaxLength(300);
             builder.HasIndex(p => p.Slug).IsUnique();

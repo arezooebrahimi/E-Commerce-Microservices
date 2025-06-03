@@ -1,5 +1,5 @@
 ﻿using Admin.Services.Abstract;
-using Common.Dtos.Catalog.Feature;
+using Common.Dtos.Admin.Feature;
 using Common.Dtos.Common;
 using Common.Entities;
 using Common.WebFramework.Api;

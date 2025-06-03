@@ -1,8 +1,6 @@
-﻿
+﻿using Common.Dtos.Common;
 
-using Common.Dtos.Common;
-
-namespace Common.Dtos.Catalog.Product
+namespace Common.Dtos.Admin.Product
 {
     public class GetProductsRequest
     {

@@ -1,6 +1,6 @@
 ﻿using Asp.Versioning;
 using Catalog.Service.v1.Abstract;
-using Common.Dtos.Catalog.Product;
+using Common.Dtos.Admin.Product;
 using Common.Dtos.Common;
 using Common.WebFramework.Api;
 using Microsoft.AspNetCore.Mvc;

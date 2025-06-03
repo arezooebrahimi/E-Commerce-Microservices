@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Dtos.Catalog.Tag
+namespace Common.Dtos.Admin.Tag
 {
     public class CreateTagRequest
     {
