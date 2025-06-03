@@ -27,7 +27,14 @@ namespace Admin.Services.Concrete
             var response = new PagedResponse<GetFeaturesPaginateDto>
             {
                 Total = total,
-                Items = _mapper.Map<List<GetFeaturesPaginateDto>>(features)
+                Items = features.Select(feature => new GetFeaturesPaginateDto
+                {
+                    Id = feature.Id,
+                    Name = feature.Name,
+                    Slug = feature.Slug,
+                    IsFilter = feature.IsFilter,
+                    OptionsName = feature.Options?.Select(o => o.Name).ToList()
+                }).ToList()
             };
 
             return response;
