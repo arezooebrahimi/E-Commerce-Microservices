@@ -2,6 +2,8 @@
 using Basket.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Basket.Extensions;
+using System.ComponentModel.DataAnnotations;
+using FluentValidation;
 
 namespace Basket.Endpoints.v1
 {
@@ -44,8 +46,18 @@ namespace Basket.Endpoints.v1
             });
         }
 
-        private static async Task<IResult> AddItem(HttpContext context,[FromBody] RemoveBasketItemRequest req,[FromServices] IBasketService basketService)
+        private static async Task<IResult> AddItem(HttpContext context,[FromBody] RemoveBasketItemRequest req,[FromServices] IBasketService basketService, [FromServices] IValidator<RemoveBasketItemRequest> validator)
         {
+            var validationResult = await validator.ValidateAsync(req);
+            if (!validationResult.IsValid)
+            {
+                return Results.BadRequest(validationResult.Errors.Select(e => new
+                {
+                    Field = e.PropertyName,
+                    Error = e.ErrorMessage
+                }));
+            }
+
             if (context.IsAuthenticated())
                 req.BasketId = context.GetUserId()!;
 
@@ -57,8 +69,18 @@ namespace Basket.Endpoints.v1
             });
         }
 
-        private static async Task<IResult> RemoveItem(HttpContext context,[FromBody] RemoveBasketItemRequest req,[FromServices] IBasketService basketService)
+        private static async Task<IResult> RemoveItem(HttpContext context,[FromBody] RemoveBasketItemRequest req,[FromServices] IBasketService basketService, [FromServices] IValidator<RemoveBasketItemRequest> validator)
         {
+            var validationResult = await validator.ValidateAsync(req);
+            if (!validationResult.IsValid)
+            {
+                return Results.BadRequest(validationResult.Errors.Select(e => new
+                {
+                    Field = e.PropertyName,
+                    Error = e.ErrorMessage
+                }));
+            }
+
             if (context.IsAuthenticated())
                 req.BasketId = context.GetUserId()!;
 

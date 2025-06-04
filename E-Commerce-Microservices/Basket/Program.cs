@@ -1,6 +1,8 @@
 using Basket.API.Configurations.Installers;
 using Basket.Endpoints.v1;
 using Basket.Extensions;
+using Basket.Models;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -14,6 +16,8 @@ await builder.Services.InstallServices(
 );
 
 builder.Services.AddSwaggerGen();
+builder.Services.AddValidatorsFromAssemblyContaining<RemoveBasketItemRequestValidator>();
+
 
 var app = builder.Build();
 
