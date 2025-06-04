@@ -1,4 +1,6 @@
 using Basket.API.Configurations.Installers;
+using Basket.Endpoints.v1;
+using Basket.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -21,5 +23,6 @@ app.InstallWebApp(
     typeof(IWebApplicationInstaller).Assembly
 );
 
-
+app.UseAuthMiddleware();
+app.MapV1BasketEndpoints();
 app.Run();
