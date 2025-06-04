@@ -22,5 +22,6 @@ app.InstallWebApp(
 );
 
 app.UseCustomExceptionHandler();
+app.UseCors("AllowSpecific");
 app.MapControllers();
 app.Run();
