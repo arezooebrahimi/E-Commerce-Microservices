@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using Basket.Extensions;
 using System.ComponentModel.DataAnnotations;
 using FluentValidation;
+using Common.WebFramework.Api;
+using Basket.Helpers;
+using Common.Exceptions;
 
 namespace Basket.Endpoints.v1
 {
@@ -32,54 +35,42 @@ namespace Basket.Endpoints.v1
               .WithSummary("Merge Basket");
         }
 
-        private static async Task<IResult> GetBasket(HttpContext context, [FromBody] GetBasketRequest req, [FromServices] IBasketService basketService)
+        private static async Task<ApiResult> GetBasket(HttpContext context, [FromBody] GetBasketRequest req, [FromServices] IBasketService basketService)
         {
             if (context.IsAuthenticated())
                 req.BasketId = context.GetUserId();
 
             var basket = await basketService.GetBasketAsync(req.BasketId!,true);
 
-            return Results.Ok(new
+            return new
             {
                 BasketId = context.IsAuthenticated() ? null : req.BasketId,
                 Basket = basket
-            });
+            }.ToApiSuccess();
         }
 
-        private static async Task<IResult> AddItem(HttpContext context,[FromBody] RemoveBasketItemRequest req,[FromServices] IBasketService basketService, [FromServices] IValidator<RemoveBasketItemRequest> validator)
+        private static async Task<ApiResult> AddItem(HttpContext context,[FromBody] RemoveBasketItemRequest req,[FromServices] IBasketService basketService, [FromServices] IValidator<RemoveBasketItemRequest> validator)
         {
             var validationResult = await validator.ValidateAsync(req);
             if (!validationResult.IsValid)
-            {
-                return Results.BadRequest(validationResult.Errors.Select(e => new
-                {
-                    Field = e.PropertyName,
-                    Error = e.ErrorMessage
-                }));
-            }
+                return validationResult.ToValidationErrorResult();
 
             if (context.IsAuthenticated())
                 req.BasketId = context.GetUserId()!;
 
             var basket = await basketService.AddItemAsync(req);
-            return Results.Ok(new
+            return new
             {
                 BasketId = context.IsAuthenticated() ? null : req.BasketId,
                 Basket = basket
-            });
+            }.ToApiSuccess();
         }
 
-        private static async Task<IResult> RemoveItem(HttpContext context,[FromBody] RemoveBasketItemRequest req,[FromServices] IBasketService basketService, [FromServices] IValidator<RemoveBasketItemRequest> validator)
+        private static async Task<ApiResult> RemoveItem(HttpContext context,[FromBody] RemoveBasketItemRequest req,[FromServices] IBasketService basketService, [FromServices] IValidator<RemoveBasketItemRequest> validator)
         {
             var validationResult = await validator.ValidateAsync(req);
             if (!validationResult.IsValid)
-            {
-                return Results.BadRequest(validationResult.Errors.Select(e => new
-                {
-                    Field = e.PropertyName,
-                    Error = e.ErrorMessage
-                }));
-            }
+                return validationResult.ToValidationErrorResult();
 
             if (context.IsAuthenticated())
                 req.BasketId = context.GetUserId()!;
@@ -87,28 +78,28 @@ namespace Basket.Endpoints.v1
             var basket = await basketService.RemoveItemAsync(req);
 
             if (basket == null)
-                return Results.NotFound();
+                return new ApiResult(false, ApiResultStatusCode.NotFound, "آیتم مورد نظر در سبد خرید یافت نشد.");
 
-            return Results.Ok(new
+            return new
             {
                 BasketId = context.IsAuthenticated() ? null : req.BasketId,
                 Basket = basket
-            });
+            }.ToApiSuccess();
         }
 
-        private static async Task<IResult> MergeBasket(HttpContext context, [FromBody] GetBasketRequest req, [FromServices] IBasketService basketService)
+        private static async Task<ApiResult> MergeBasket(HttpContext context, [FromBody] GetBasketRequest req, [FromServices] IBasketService basketService)
         {
             var userId = context.GetUserId();
             var basket = await basketService.MergeBasketsAsync(req.BasketId!, userId!);
 
             if (basket == null)
-                return Results.NotFound();
+                return new ApiResult(false, ApiResultStatusCode.NotFound, "آیتم مورد نظر در سبد خرید یافت نشد.");
 
-            return Results.Ok(new
+            return new
             {
                 BasketId = context.IsAuthenticated() ? null : req.BasketId,
                 Basket = basket
-            });
+            }.ToApiSuccess();
         }
     }
 }
