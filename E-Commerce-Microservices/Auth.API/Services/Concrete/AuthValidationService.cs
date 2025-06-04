@@ -60,14 +60,6 @@ namespace Auth.Services.Concrete
                     ErrorMessage = "Token has expired"
                 };
             }
-            catch (SecurityTokenInvalidSignatureException)
-            {
-                return new AuthTokenValidationResult
-                {
-                    IsValid = false,
-                    ErrorMessage = "Token signature is invalid"
-                };
-            }
             catch (Exception)
             {
                 return new AuthTokenValidationResult

@@ -1,5 +1,6 @@
 using Auth.API.Configurations.Installers;
 using Auth.API.Middlewares;
+using Auth.Services.Grpc;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
     options.SuppressModelStateInvalidFilter = true;
 });
 
+builder.Services.AddGrpc();
 var app = builder.Build();
 
 app.InstallWebApp(
@@ -32,6 +34,7 @@ app.UseCustomExceptionHandler();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapGrpcService<GrpcAuthService>();
 app.MapGet("/", () => "Auth gRPC is running!");
 app.MapControllers();
 app.Run();
