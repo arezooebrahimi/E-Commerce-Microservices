@@ -12,5 +12,6 @@ namespace FileManager.Repositories.Abstract
         Task<bool> UpdateAsync(string id, TDocument document);
         Task<bool> DeleteAsync(List<string> ids);
         Task<bool> ExistsByFilePathAsync(string filePath);
+        Task<List<TDocument>> GetByIdsAsync(List<string> ids);
     }
 }

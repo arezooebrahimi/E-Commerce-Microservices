@@ -120,6 +120,13 @@ namespace FileManager.Services.Concrete
             return _repository.GetAllAsync(req);
         }
 
+
+        public Task<List<MediaDocument>> GetByIdsAsync(List<string> ids)
+        {
+            return _repository.GetByIdsAsync(ids);
+        }
+
+
         public Task<MediaDocument?> GetByIdAsync(string id)
         {
             return _repository.GetByIdAsync(id);

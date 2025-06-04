@@ -1,0 +1,35 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GetFiles.Grpc";
+
+service  GetFilesService {
+  rpc GetFilesByIds (GetFilesByIdsRequest) returns (GetFilesByIdsResponse);
+}
+
+
+message GetFilesByIdsRequest {
+  repeated string ids = 1;
+}
+
+message GetFilesByIdsResponse {
+  repeated MediaDocument mediaDocuments = 1;
+}
+
+message MediaDocument {
+  string id = 1;
+  string fileName = 2;
+  string filePath = 3;
+  string mimeType = 4;
+  int64 size = 5;
+  string createdAt = 6;
+  repeated MediaFormat formats = 7;
+}
+
+message MediaFormat {
+  string fileName = 1;
+  string filePath = 2;
+  string format = 3;
+  string ext = 4;
+  int32 width = 5;
+  int32 height = 6;
+}

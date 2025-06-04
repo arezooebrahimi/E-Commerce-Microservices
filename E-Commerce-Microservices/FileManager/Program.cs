@@ -24,6 +24,7 @@ app.InstallWebApp(
 app.UseCustomExceptionHandler();
 app.UseCors("AllowSpecific");
 app.MapGrpcService<FileManagerGrpcServer>();
+app.MapGrpcService<GetFilesGrpcService>();
 app.MapGet("/", () => "FileManager gRPC is running!");
 app.MapControllers();
 app.Run();

@@ -4,6 +4,7 @@ using Catalog.Data.Repositories.EntityFramework.Abstract;
 using Catalog.Data.Repositories.EntityFramework.Concrete;
 using Catalog.Service.v1.Abstract;
 using Catalog.Service.v1.Concrete;
+using Catalog.Service.v1.Grpc;
 using Common.Attributes;
 
 namespace Catalog.API.Configurations.Installers.ServiceInstallers;
@@ -22,6 +23,8 @@ public class StartupDIServiceInstaller : IServiceInstaller
 
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<IProductService, ProductService>();
+
+        services.AddSingleton<GetFilesGrpcClient>();
 
         return Task.CompletedTask;
     }

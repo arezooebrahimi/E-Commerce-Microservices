@@ -32,6 +32,7 @@
   </ItemGroup>
 
 	<ItemGroup>
+		<Protobuf Include="Services\Grpc\Protos\get_medias.proto" GrpcServices="Server" />
 		<Protobuf Include="Services\Grpc\Protos\filemanager.proto" GrpcServices="Server" />
 	</ItemGroup>
 

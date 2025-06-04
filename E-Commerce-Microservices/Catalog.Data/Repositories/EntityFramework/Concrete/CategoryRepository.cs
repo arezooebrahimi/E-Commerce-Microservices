@@ -15,7 +15,7 @@ namespace Catalog.Data.Repositories.EntityFramework.Concrete
 
         public async Task<IEnumerable<Category>> GetHomePageCategoriesAsync()
         {
-            return await _context.Categories.Where(c=>c.DisplayOnHomePage).ToListAsync();
+            return await _context.Categories.Include(m=>m.Medias).Where(c=>c.DisplayOnHomePage).ToListAsync();
         }
     }
 }

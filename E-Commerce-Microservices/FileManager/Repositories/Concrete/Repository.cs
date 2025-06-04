@@ -53,6 +53,15 @@ namespace FileManager.Repositories.Concrete
         }
 
 
+        public async Task<List<TDocument>> GetByIdsAsync(List<string> ids)
+        {
+            var objectIds = ids.Select(id => ObjectId.Parse(id)).ToList();
+            var filter = Builders<TDocument>.Filter.In("_id", objectIds);
+            var result = await _collection.FindAsync(filter);
+            return await result.ToListAsync();
+        }
+
+
         public async Task<TDocument?> GetByIdAsync(string id)
         {
             var filter = Builders<TDocument>.Filter.Eq("_id", ObjectId.Parse(id));

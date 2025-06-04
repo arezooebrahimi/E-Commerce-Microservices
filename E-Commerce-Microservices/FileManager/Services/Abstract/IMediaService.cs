@@ -12,5 +12,6 @@ namespace FileManager.Services.Abstract
         Task CreateAsync(MediaDocument document);
         Task<bool> UpdateAsync(string id, MediaDocument document);
         Task<bool> DeleteAsync(List<string> ids);
+        Task<List<MediaDocument>> GetByIdsAsync(List<string> ids);
     }
 }
