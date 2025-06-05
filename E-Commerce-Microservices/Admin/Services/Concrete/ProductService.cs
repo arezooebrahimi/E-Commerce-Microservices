@@ -1,4 +1,5 @@
 ﻿using Admin.Repositories.Abstract;
+using Admin.Repositories.Concrete;
 using Admin.Services.Abstract;
 using AutoMapper;
 using Common.Dtos.Admin.Product;
@@ -12,10 +13,12 @@ namespace Admin.Services.Concrete
     {
         private readonly IRepository<Product> _productRepository;
         private readonly IMapper _mapper;
+        private readonly IProductMediaRepository _productMediaRepository;
 
-        public ProductService(IRepository<Product> productRepository, IMapper mapper)
+        public ProductService(IRepository<Product> productRepository, IMapper mapper, IProductMediaRepository productMediaRepository)
         {
             _productRepository = productRepository;
+            _productMediaRepository = productMediaRepository;
             _mapper = mapper;
         }
 
@@ -50,7 +53,14 @@ namespace Admin.Services.Concrete
             if (isDuplicate)
                 throw new AppException($"Slug '{request.Slug}' is already in use.");
 
-            var entity = await _productRepository.AddAsync(_mapper.Map<Product>(request));
+            var newEntity = _mapper.Map<Product>(request);
+
+            if (newEntity.SeoTitle != null)
+                newEntity.SeoTitleLength = newEntity.SeoTitle.Length;
+            if (newEntity.MetaDescription != null)
+                newEntity.MetaDescriptionLength = newEntity.MetaDescription.Length;
+
+            var entity = await _productRepository.AddAsync(newEntity);
             await _productRepository.SaveChangesAsync();
             return entity;
         }
@@ -60,10 +70,19 @@ namespace Admin.Services.Concrete
             Product? entity = null;
             if (request.Id != null)
             {
+                var medias = await _productMediaRepository.GetByProductIdAsync(request.Id);
+                if (medias.Count() != 0)
+                    _productMediaRepository.DeleteRange(medias);
+
                 entity = await _productRepository.GetByIdAsync((Guid)request.Id);
                 if (entity != null)
                 {
                     _mapper.Map(request, entity);
+                    if (request.SeoTitle != null)
+                        entity.SeoTitleLength = request.SeoTitle.Length;
+                    if (request.MetaDescription != null)
+                        entity.MetaDescriptionLength = request.MetaDescription.Length;
+
                     await _productRepository.SaveChangesAsync();
                 }
             }

@@ -21,6 +21,7 @@ namespace Catalog.Data.Repositories.EntityFramework.Concrete
         {
             var query = _context.Products
               .Include(v => v.Variables.OrderBy(v => v.Price).Take(1))
+              .Include(m=>m.Medias)
               .Where(p => p.IsDeleted == false)
               .AsQueryable();
 
@@ -45,7 +46,8 @@ namespace Catalog.Data.Repositories.EntityFramework.Concrete
                 SalePrice = p.SalePrice,
                 DateOnSaleFrom = p.DateOnSaleFrom,
                 DateOnSaleTo = p.DateOnSaleTo,
-                Variables = p.Variables
+                Variables = p.Variables,
+                Medias = p.Medias,
             })
             .Skip(req.Offset)
             .Take(req.Limit)

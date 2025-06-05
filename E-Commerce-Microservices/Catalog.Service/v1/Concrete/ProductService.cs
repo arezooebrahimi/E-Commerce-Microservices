@@ -1,9 +1,11 @@
 ﻿using Catalog.Data.Repositories.EntityFramework.Abstract;
 using Catalog.Service.v1.Abstract;
+using Catalog.Service.v1.Grpc;
 using Common.Dtos.Admin.Product;
 using Common.Dtos.Common;
 using Common.Entities;
 using Common.Utilities;
+using GetFiles.Grpc;
 
 
 
@@ -12,9 +14,11 @@ namespace Catalog.Service.v1.Concrete
     public class ProductService:IProductService
     {
         private readonly IProductRepository _productRepository;
-        public ProductService(IProductRepository productRepository)
+        private readonly GetFilesGrpcClient _filesClient;
+        public ProductService(IProductRepository productRepository, GetFilesGrpcClient filesClient)
         {
             _productRepository = productRepository;
+            _filesClient = filesClient;
         }
 
 
@@ -24,10 +28,25 @@ namespace Catalog.Service.v1.Concrete
             long? price = 0;
             long? salePrice = 0;
             var now = DateTime.Now;
+            var mediaIds = new List<string>();
+            var medias = new List<MediaDocument>();
+            ProductMedia? productMedia = null;
+            string? mediaId = null;
+
             var (products, total) = await _productRepository.GetProducts(req);
 
+            foreach (var item in products)
+            {
+                mediaId = item.Medias?.Where(m => m.IsPrimary).Select(m => m.MediaId).FirstOrDefault();
+                if (mediaId != null)
+                    mediaIds.Add(mediaId);
+            }
+
+            if (mediaIds.Count > 0)
+                medias = await _filesClient.GetFilesByIds(mediaIds);
+
             var commentsAndRating = await _productRepository.GetProductsRaitingAndReviewsCount(products.Select(p => p.Id).ToList());
-            
+
             foreach (var product in products)
             {
                 price = product.Price;
@@ -39,6 +58,8 @@ namespace Catalog.Service.v1.Concrete
                     salePrice = product.Variables.First().DateOnSaleFrom <= now && now <= product.Variables.First().DateOnSaleTo ? product.Variables.First().SalePrice : product.Variables.First().Price;
                 }
 
+                productMedia = product.Medias?.Where(m => m.IsPrimary).FirstOrDefault();
+
                 response.Items.Add(new ProductsResponse
                 {
                     Name = product.Name,
@@ -46,11 +67,12 @@ namespace Catalog.Service.v1.Concrete
                     Price = price,
                     SalePrice = salePrice,
                     Raiting = commentsAndRating.Where(p => p.ProductId == product.Id).First().Raiting,
-                    ReviewsCount = commentsAndRating.Where(p => p.ProductId == product.Id).First().ReviewsCount
+                    ReviewsCount = commentsAndRating.Where(p => p.ProductId == product.Id).First().ReviewsCount,
+                    FilePath = productMedia != null ? medias.Where(m => m.Id == productMedia.MediaId).Select(m => m.Formats.Where(f => f.Format == "thumbnail").Select(f => f.FilePath).FirstOrDefault()).FirstOrDefault() : null,
+                    AltText = productMedia?.AltText ?? null,
                 });
             }
             response.Total = total;
-
             return response;
         }
 

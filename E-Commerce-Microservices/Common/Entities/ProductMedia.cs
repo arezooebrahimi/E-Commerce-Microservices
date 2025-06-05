@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace Common.Entities
 {
@@ -13,6 +14,8 @@ namespace Common.Entities
         public int Order { get; set; }
 
         // Navigation properties
+
+        [JsonIgnore]
         public  Product? Product { get; set; }
     }
 } 

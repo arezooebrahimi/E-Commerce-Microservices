@@ -20,7 +20,7 @@ namespace FileManager.Controllers
 
 
         [HttpPost("upload")]
-        public async Task<ApiResult<List<string>>> UploadFile([FromForm] List<IFormFile> files)
+        public async Task<ApiResult<List<MediaDocument>>> UploadFile([FromForm] List<IFormFile> files)
         {
             if (files.Count == 0)
                 return BadRequest("No file uploaded.");

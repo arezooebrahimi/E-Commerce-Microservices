@@ -24,11 +24,9 @@ public class MappingProfile : Profile
         CreateMap<CreateCategoryRequest, Category>();
 
 
-        CreateMap<CreateTagRequest, Tag>().
-            ForMember(dest => dest.Medias, opt => opt.Ignore());
+        CreateMap<CreateTagRequest, Tag>();
 
-        CreateMap<CreateProductRequest, Product>().
-            ForMember(dest => dest.Medias, opt => opt.Ignore());
+        CreateMap<CreateProductRequest, Product>();
 
         CreateMap<CreateFeatureRequest, Feature>();
         CreateMap<CreateFeatureOptionRequest, FeatureOption>();
