@@ -6,5 +6,6 @@ namespace Catalog.Service.v1.Abstract
     public interface ICategoryService
     {
         Task<IEnumerable<CategoryHomePageResponse>> GetHomePageCategoriesAsync();
+        Task<GetCategoryBySlugResponse?> GetCategoryBySlug(string slug);
     }
 }

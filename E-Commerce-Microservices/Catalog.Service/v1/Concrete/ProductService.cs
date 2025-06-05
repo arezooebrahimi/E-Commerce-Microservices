@@ -68,7 +68,7 @@ namespace Catalog.Service.v1.Concrete
                     SalePrice = salePrice,
                     Raiting = commentsAndRating.Where(p => p.ProductId == product.Id).First().Raiting,
                     ReviewsCount = commentsAndRating.Where(p => p.ProductId == product.Id).First().ReviewsCount,
-                    FilePath = productMedia != null ? medias.Where(m => m.Id == productMedia.MediaId).Select(m => m.Formats.Where(f => f.Format == "thumbnail").Select(f => f.FilePath).FirstOrDefault()).FirstOrDefault() : null,
+                    FilePath = productMedia != null ? medias.Where(m => m.Id == productMedia.MediaId).Select(m => m.Formats.Where(f => f.Format == "small").Select(f => f.FilePath).FirstOrDefault()).FirstOrDefault() : null,
                     AltText = productMedia?.AltText ?? null,
                 });
             }

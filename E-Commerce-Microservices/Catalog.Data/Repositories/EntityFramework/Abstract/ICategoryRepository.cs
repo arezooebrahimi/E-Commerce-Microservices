@@ -10,5 +10,6 @@ namespace Catalog.Data.Repositories.EntityFramework.Abstract
     public interface ICategoryRepository
     {
         Task<IEnumerable<Category>> GetHomePageCategoriesAsync();
+        Task<Category?> GetCategoryBySlug(string slug);
     }
 }

@@ -9,5 +9,6 @@ public class CategoryMappingProfile : Profile
     public CategoryMappingProfile()
     {
         CreateMap<Category, CategoryHomePageResponse>();
+        CreateMap<Category, GetCategoryBySlugResponse>();
     }
 } 

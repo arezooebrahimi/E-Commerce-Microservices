@@ -24,6 +24,9 @@ public class StartupDIServiceInstaller : IServiceInstaller
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<IProductService, ProductService>();
 
+        services.AddScoped<ITagRepository, TagRepository>();
+        services.AddScoped<IBrandRepository, BrandRepository>();
+
         services.AddSingleton<GetFilesGrpcClient>();
 
         return Task.CompletedTask;

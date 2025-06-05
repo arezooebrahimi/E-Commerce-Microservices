@@ -54,5 +54,23 @@ namespace Catalog.Service.v1.Concrete
             }
             return entities;
         }
+
+
+        public async Task<GetCategoryBySlugResponse?> GetCategoryBySlug(string slug)
+        {
+            var category = await _categoryRepository.GetCategoryBySlug(slug);
+            GetCategoryBySlugResponse? response = null;
+            if (category != null)
+            {
+                response = _mapper.Map<GetCategoryBySlugResponse>(category);
+                if(category.SubCategories != null)
+                {
+                    foreach(var subCategory in category.SubCategories)
+                        response.ChildsSlug.Add(subCategory.Slug);
+                }
+            }
+            
+            return response;
+        }
     }
 }
