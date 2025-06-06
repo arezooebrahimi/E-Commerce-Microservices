@@ -36,5 +36,6 @@ app.UseAuthorization();
 
 app.MapGrpcService<GrpcAuthService>();
 app.MapGet("/", () => "Auth gRPC is running!");
+app.UseCors("AllowSpecific");
 app.MapControllers();
 app.Run();
