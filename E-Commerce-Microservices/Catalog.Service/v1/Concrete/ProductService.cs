@@ -1,11 +1,14 @@
-﻿using Catalog.Data.Repositories.EntityFramework.Abstract;
+﻿using AutoMapper;
+using Catalog.Data.Repositories.EntityFramework.Abstract;
 using Catalog.Service.v1.Abstract;
 using Catalog.Service.v1.Grpc;
 using Common.Dtos.Admin.Product;
+using Common.Dtos.Catalog.Category;
 using Common.Dtos.Common;
 using Common.Entities;
 using Common.Utilities;
 using GetFiles.Grpc;
+using static System.Net.Mime.MediaTypeNames;
 
 
 
@@ -15,10 +18,12 @@ namespace Catalog.Service.v1.Concrete
     {
         private readonly IProductRepository _productRepository;
         private readonly GetFilesGrpcClient _filesClient;
-        public ProductService(IProductRepository productRepository, GetFilesGrpcClient filesClient)
+        private readonly IMapper _mapper;
+        public ProductService(IProductRepository productRepository, GetFilesGrpcClient filesClient, IMapper mapper)
         {
             _productRepository = productRepository;
             _filesClient = filesClient;
+            _mapper = mapper;
         }
 
 
@@ -79,14 +84,27 @@ namespace Catalog.Service.v1.Concrete
         public async Task<ProductDetailsResponse?> GetProductDetails(string slug)
         {
             List<FeatureOption> featureOptions = new List<FeatureOption>();
+            var medias = new List<MediaDocument>();
+            var formats = new List<ProductImageFormatDto>();
             var product = await _productRepository.GetProductDetailsBySlug(slug);
             if (product == null)
                 return null;
+
+
+            if (product.Medias != null)
+            {
+                if(product.Medias.Count > 0){
+                    var mediaIds = product.Medias?.Select(m => m.MediaId).ToList();
+                    medias = await _filesClient.GetFilesByIds(mediaIds!);
+                }
+            }
 
             if (product.Features != null)
             {
                 featureOptions = await _productRepository.GetFeatureOptionsByIds(product.Features.Select(pf => pf.DefaultFeatureOptionId).ToList());
             }
+
+            
 
             var commentsAndRating = await _productRepository.GetProductsRaitingAndReviewsCount([product.Id]);
 
@@ -104,8 +122,19 @@ namespace Catalog.Service.v1.Concrete
                 DiscountPercent = product.SalePrice.HasValue ? Math.Round((double)(product.Price - product.SalePrice.Value) * 100 / product.Price, 2) : 0,
                 Tag = product.Tag,
                 StockStatus = product.StockStatus,
+                Categories = product.Categories!= null ? product.Categories.Select(c=> new ProductsCategorieDto 
+                { 
+                    Name = c.Category.Name,
+                    Slug = c.Category.Slug
+                }).ToList() : null,
+                Tags = product.Tags != null ? product.Tags.Select(c => new ProductsCategorieDto
+                {
+                    Name = c.Tag.Name,
+                    Slug = c.Tag.Slug
+                }).ToList() : null,
                 LatestReviews = product.Reviews != null ? product.Reviews.Select(f => new ProductReviewDto
                 {
+                    Name = f.Name,
                     Title = f.Title,
                     ReviewText = f.ReviewText,
                     Rating = f.Rating,
@@ -127,6 +156,7 @@ namespace Catalog.Service.v1.Concrete
                 Variables = product.Variables != null ? product.Variables
                     .Select(f => new ProductVariableDto
                     {
+                        OptionId = f.FeatureOption.Id,
                         OptionName = f.FeatureOption?.Name ?? "",
                         Price = f.Price,
                         SalePrice = f.DateOnSaleFrom <= now && now <= f.DateOnSaleTo ? f.SalePrice : f.Price,
@@ -146,8 +176,67 @@ namespace Catalog.Service.v1.Concrete
                     IsIndexed = product.IsIndexed,
                     IsFollowed = product.IsFollowed,
                     CanonicalUrl = product.CanonicalUrl
-                }
+                },
+                Images = new List<ProductImageDto>()
+
             };
+
+            if (product.LinkedProducts.Count() != 0)
+            {
+                var relatedProductsIds = await _productRepository.GetProductsRaitingAndReviewsCount(product.LinkedProducts.Select(rp => rp.RelatedProductId).ToList());
+                var filterModes = new List<FilterMode>();
+                foreach(var relId in product.LinkedProducts.Select(l=>l.RelatedProductId).Take(8))
+                {
+                    filterModes.Add(new FilterMode
+                    {
+                        Mode = "equals",
+                        Value = relId.ToString()
+                    });
+                }
+                response.RelatedProducts = GetProducts(new GetProductsRequest
+                {
+                    Limit= 8,
+                    Offset=0,
+                    Filters = new Dictionary<string, FilterOptions>
+                    {
+                        ["Id"] = new FilterOptions
+                        {
+                            Operator = "or",
+                            FilterModes = filterModes
+                        }
+                    }
+                }).Result.Items;
+            }
+
+            if (product.Medias != null)
+            {
+                foreach (var media in product.Medias)
+                {
+                    var mediaDoc = medias.Where(m=>m.Id ==media.MediaId).FirstOrDefault();
+                    formats = new List<ProductImageFormatDto>();
+                    if (mediaDoc != null)
+                    {
+                        foreach (var format in mediaDoc.Formats.Where(f=>f.Format== "thumbnail" || f.Format=="medium"))
+                        {
+                            formats.Add(new ProductImageFormatDto()
+                            {
+                                FilePath = format.FilePath,
+                                Width = format.Width,
+                                Height = format.Height,
+                                Format = format.Format
+                            });
+                        }
+                    }
+                    response.Images.Add(new ProductImageDto
+                    {
+                        AltText = media.AltText,
+                        Title = media.Title,
+                        IsPrimary = media.IsPrimary,
+                        Formats = formats,
+                    });  
+                }
+            }
+
             return response;
         }
     }

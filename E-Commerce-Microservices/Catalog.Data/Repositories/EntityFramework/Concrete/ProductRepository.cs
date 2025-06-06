@@ -62,10 +62,12 @@ namespace Catalog.Data.Repositories.EntityFramework.Concrete
             var product = await _context.Products
                 .Include(p=>p.Brand)
                 .Include(p => p.Features).ThenInclude(f=>f.Feature)
-                .Include(p => p.Medias)
+                .Include(p => p.Medias.OrderBy(m=>m.Order))
                 .Include(p => p.Reviews.OrderByDescending(r=>r.CreatedAt).Take(10))
-                .Include(p => p.RelatedProducts)
+                .Include(p => p.LinkedProducts).ThenInclude(r=>r.RelatedProduct)
                 .Include(p=>p.Variables).ThenInclude(p=>p.FeatureOption)
+                .Include(p => p.Categories).ThenInclude(c=>c.Category)
+                .Include(p=>p.Tags).ThenInclude(c => c.Tag)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(p => p.Slug == slug && !p.IsDeleted);
 

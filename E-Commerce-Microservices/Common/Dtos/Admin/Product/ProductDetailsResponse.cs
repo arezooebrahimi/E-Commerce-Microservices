@@ -1,6 +1,5 @@
 ﻿using Common.Entities.Enums;
 
-
 namespace Common.Dtos.Admin.Product
 {
     public class ProductDetailsResponse
@@ -18,10 +17,19 @@ namespace Common.Dtos.Admin.Product
         public string? Description { get; set; }
         public List<ProductFeatureDto>? Features { get; set; }
         public List<ProductVariableDto>? Variables { get; set; }
-        public List<string>? Images { get; set; }
+        public required List<ProductImageDto> Images { get; set; }
         public List<ProductReviewDto>? LatestReviews { get; set; }
-        public List<ProductRelatedDto>? RelatedProducts { get; set; }
+        public List<ProductsResponse>? RelatedProducts { get; set; }
+        public List<ProductsCategorieDto>? Categories { get; set; }
+        public List<ProductsCategorieDto>? Tags { get; set; }
         public SeoDto? Seo { get; set; }
+    }
+
+
+    public class ProductsCategorieDto
+    {
+        public required string Slug { get; set; }
+        public required string Name { get; set; }
     }
 
 
@@ -30,6 +38,24 @@ namespace Common.Dtos.Admin.Product
         public Guid ProductId { get; set; }
         public double Raiting { get; set; }
         public int ReviewsCount { get; set; }
+    }
+
+
+    public class ProductImageDto
+    {
+        public bool IsPrimary { get; set; }
+        public string? Title { get; set; }
+        public string? AltText { get; set; }
+        public List<ProductImageFormatDto>? Formats { get; set; }
+    }
+
+
+    public class ProductImageFormatDto
+    {
+        public required string FilePath { get; set; }
+        public required string Format { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
     }
 
 
@@ -42,6 +68,7 @@ namespace Common.Dtos.Admin.Product
 
     public class ProductVariableDto
     {
+        public required Guid OptionId { get; set; }
         public required string OptionName { get; set; }
         public long? Price { get; set; }
         public long? SalePrice { get; set; }
@@ -56,16 +83,11 @@ namespace Common.Dtos.Admin.Product
 
     public class ProductReviewDto
     {
+        public required string Name { get; set; }
         public required string Title { get; set; }
         public required string ReviewText { get; set; }
         public int Rating { get; set; }
         public required string CreatedAt { get; set; }
-    }
-
-    public class ProductRelatedDto
-    {
-        public required string Name { get; set; }
-        public required string Slug { get; set; }
     }
 
     public class SeoDto

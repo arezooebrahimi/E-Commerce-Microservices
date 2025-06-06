@@ -8,7 +8,7 @@ public class MappingServiceInstaller : IServiceInstaller
 {
     public Task Install(IServiceCollection services, IConfiguration configuration, IWebHostEnvironment hostEnvironment)
     {
-        services.AddAutoMapper(typeof(CategoryMappingProfile).Assembly);
+        services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
         return Task.CompletedTask;
     }
